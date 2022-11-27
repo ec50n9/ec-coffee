@@ -15,6 +15,10 @@
   color: #0037ae;
 }
 
+.van-icon{
+  color: #0037ae;
+}
+
 .swiper{
   height: 550rpx;
 }

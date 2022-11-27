@@ -1,0 +1,46 @@
+{
+  "pages":[
+    "pages/home/home",
+    "pages/menu/menu",
+    "pages/shopbag/shopbag",
+    "pages/my/my",
+    "pages/search/search",
+    "pages/detail/detail",
+    "pages/index/index",
+    "pages/logs/logs"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "鹅次咖啡",
+    "navigationBarTextStyle":"black"
+  },
+  "tabBar": {
+    "color": "#595a5b",
+    "selectedColor": "#0037ae",
+    "list":[
+      {
+        "pagePath": "pages/home/home",
+        "text": "首页",
+        "iconPath": "icons/home.png",
+        "selectedIconPath": "icons/home_active.png"
+      },{
+        "pagePath": "pages/menu/menu",
+        "text": "菜单",
+        "iconPath": "icons/menu.png",
+        "selectedIconPath": "icons/menu_active.png"
+      },{
+        "pagePath": "pages/shopbag/shopbag",
+        "text": "购物袋",
+        "iconPath": "icons/shopbag.png",
+        "selectedIconPath": "icons/shopbag_active.png"
+      },{
+        "pagePath": "pages/my/my",
+        "text": "我的",
+        "iconPath": "icons/my.png",
+        "selectedIconPath": "icons/my_active.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}

@@ -1,0 +1,95 @@
+/* pages/home/home.wxss */
+.header{
+  display: flex;
+  align-items: center;
+  padding-left: 24rpx;
+  background-color: #fff;
+}
+.welcome-text{
+  flex-grow: 1;
+  font-weight: bold;
+}
+.welcome__name{
+  display: inline-block;
+  margin-left: 16rpx;
+  color: #0037ae;
+}
+
+.swiper{
+  height: 550rpx;
+}
+.swiper-item{
+  height: 518rpx;
+  background-color: antiquewhite;
+  margin: 16rpx;
+  border-radius: 24rpx;
+  overflow: hidden;
+}
+.banner-img{
+  width: 100%;
+  height: 100%;
+}
+
+.recommend-bar{
+  background-color: #fff;
+  margin: 16rpx 0;
+  overflow: auto;
+}
+
+.recommend-bar__text{
+  display: inline-block;
+  padding: 16rpx 32rpx;
+  margin: 16rpx 0;
+  border-top-right-radius: 32rpx;
+  color: #fff;
+  background-color: #0037ae;
+}
+
+.coffee-list{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16rpx;
+  padding: 16rpx;
+}
+.coffee{
+  position: relative;
+  padding: 16rpx;
+  background-color: #fff;
+  border-radius: 16rpx;
+  overflow: auto;
+}
+.coffee__tag{
+  position: absolute;
+  top: 16rpx;
+  left: 32rpx;
+  padding: 8rpx;
+  font-size: small;
+  color: #fff;
+  background-color: #0037ae;
+  border-radius: 0 0 8rpx 8rpx;
+}
+.coffee__cover{
+  width: 100%;
+  border-radius: 16rpx;
+}
+.coffee__zh-name{
+  margin-top: 16rpx;
+  font-size: 32rpx;
+  color: #595a5b;
+}
+.coffee__en-name{
+  margin-top: 8rpx;
+  font-size: 24rpx;
+  color: #8e8e8e;
+}
+.coffee__zh-name, .coffee__en-name{
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.coffee__price{
+  margin-top: 16rpx;
+  color: #0037ae;
+  font-size: 32rpx;
+  font-weight: bold;
+}

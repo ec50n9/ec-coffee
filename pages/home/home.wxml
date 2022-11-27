@@ -1,0 +1,42 @@
+<!--pages/home/home.wxml-->
+<view class="header">
+  <view class="welcome-text">
+    <text class="welcome__time">下午好</text>
+    <text class="welcome__name">Allen</text>
+  </view>
+  <van-search class="search-bar" bindtap="handleSearch" shape="round" value="{{searchValue}}" placeholder="输入商品名称" />
+</view>
+
+<view class="banner">
+  <swiper class="swiper" indicator-dots="true" autoplay="true" interval="3000">
+    <block wx:for="{{bannerList}}" wx:key="pid">
+      <swiper-item bindtap="handleToDetail" data-pid="{{item.pid}}">
+        <view class="swiper-item">
+          <image class="banner-img" src="{{item.bannerImg}}" mode="aspectFill" />
+        </view>
+      </swiper-item>
+    </block>
+  </swiper>
+</view>
+
+<view class="recommend-bar">
+  <text class="recommend-bar__text">热卖推荐</text>
+</view>
+
+<view class="coffee-list">
+  <block wx:for="{{coffeeList}}" wx:key="pid">
+    <view class="coffee" bindtap="handleToDetail" data-pid="{{item.pid}}">
+      <text class="coffee__tag">hot</text>
+      <image class="coffee__cover" src="{{item.smallImg}}" mode="widthFix"/>
+      <view class="coffee__zh-name">
+        {{item.name}}
+      </view>
+      <view class="coffee__en-name">
+        {{item.enname}}
+      </view>
+      <view class="coffee__price">
+        ¥ {{item.price}}
+      </view>
+    </view>
+  </block>
+</view>

@@ -1,0 +1,5 @@
+/* components/ec-line/ec-line.wxss */
+.line{
+  height: 2rpx;
+  background-color: #e5e5e5;
+}

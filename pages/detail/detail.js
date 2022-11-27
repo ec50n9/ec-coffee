@@ -9,6 +9,10 @@ Page({
   data: {
     pid: '',
     detail: {},
+    form: {
+      tem: '冷',
+      sugar: '',
+    },
   },
 
   /**
@@ -35,7 +39,12 @@ Page({
         detail.tem = detail.tem.split('/')
         detail.sugar = detail.sugar.split('/')
         that.setData({detail})
-        console.log(that.data.detail)
+        if(detail.tem.length){
+          that.setData({'form.tem': detail.tem[0]})
+        }
+        if(detail.sugar.length){
+          that.setData({'form.sugar': detail.sugar[0]})
+        }
       }
     })
   },
@@ -45,6 +54,14 @@ Page({
   },
   onClickButton(){
     Toast('点击按钮')
+  },
+  onTapTemSpec(e){
+    const value = e.currentTarget.dataset.value;
+    this.setData({'form.tem': value})
+  },
+  onTapSugarSpec(e){
+    const value = e.currentTarget.dataset.value;
+    this.setData({'form.sugar': value}) 
   },
   onNumChange(){
 

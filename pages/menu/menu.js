@@ -5,14 +5,79 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    searchValue: '',
+    categorys: [],
+    currentType: 'isHot',
+    products: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
+    this.getCategorys()
+  },
 
+  getCategorys() {
+    const that = this;
+    wx.request({
+      url: 'http://www.kangliuyong.com:10002/type',
+      method: 'GET',
+      data: {
+        appkey: getApp().globalData.appkey
+      },
+      success({
+        data
+      }) {
+        const categorys = data.result
+        categorys.unshift({
+          id: 0,
+          type: 'isHot',
+          typeDesc: '推荐'
+        })
+        that.setData({
+          categorys
+        })
+        that.getProducts()
+      }
+    })
+  },
+
+  onTapCategory(e) {
+    const type = e.currentTarget.dataset.type;
+    this.setData({
+      currentType: type
+    })
+    this.getProducts()
+  },
+
+  getProducts(){
+    const that = this;
+    wx.request({
+      url: 'http://www.kangliuyong.com:10002/typeProducts',
+      method: 'GET',
+      data: {
+        appkey: getApp().globalData.appkey,
+        key: that.data.currentType === 'isHot' ? 'isHot' : 'type',
+        value: that.data.currentType === 'isHot' ? 1 : that.data.currentType
+      },
+      success({
+        data
+      }) {
+        const products = data.result
+        console.log(products)
+        that.setData({
+          products
+        })
+      }
+    })
+  },
+
+  onTapProduct(e){
+    const pid = e.currentTarget.dataset.pid;
+    wx.navigateTo({
+      url: `../detail/detail?pid=${pid}`,
+    })
   },
 
   /**

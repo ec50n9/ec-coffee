@@ -1,1 +1,51 @@
 /* pages/menu/menu.wxss */
+.van-icon{
+  color: #0037ae;
+}
+
+.category-list{
+  width: 100%;
+  white-space: nowrap;
+  padding: 16rpx 0;
+}
+.category{
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 25%;
+  font-size: small;
+}
+.category__icon{
+  width: 72rpx;
+}
+.category__text{
+  color: #595a5b;
+}
+.category__text--active{
+  color: #0037ae;
+}
+
+.product{
+  display: flex;
+  align-items: center;
+  gap: 24rpx;
+  padding: 24rpx 32rpx 24rpx 24rpx;
+  margin: 24rpx;
+  color: #595a5b;
+  background-color: #fff;
+  border-radius: 16rpx;
+}
+.product__img{
+  width: 160rpx;
+}
+.product__names{
+  flex-grow: 1;
+}
+.product__en-name{
+  font-size: small;
+}
+.product__price{
+  flex-shrink: 0;
+  color: #0037ae;
+  font-weight: bold;
+}

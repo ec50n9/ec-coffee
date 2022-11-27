@@ -1,2 +1,26 @@
 <!--pages/menu/menu.wxml-->
-<text>pages/menu/menu.wxml</text>
+<view class="header">
+  <van-search class="search-bar" custom-class="search-bar__custom" shape="round" value="{{searchValue}}" placeholder="输入商品名称" />
+</view>
+
+<scroll-view class="category-list" scroll-x="true">
+  <block wx:for="{{categorys}}" wx:key="type">
+    <view class="category" bindtap="onTapCategory" data-type="{{item.type}}">
+      <image class="category__icon" src="../../icons/icons_{{item.type}}{{item.type===currentType?'_active':''}}.gif" mode="widthFix"/>
+      <text class="{{['category__text', item.type===currentType?'category__text--active':'']}}">{{item.typeDesc}}</text>
+    </view>
+  </block>
+</scroll-view>
+
+<view class="product-list">
+  <block wx:for="{{products}}" wx:key="pid">
+    <view class="product" bindtap="onTapProduct" data-pid="{{item.pid}}">
+      <image class="product__img" src="{{item.smallImg}}" mode="widthFix"/>
+      <view class="product__names">
+        <view class="product__zh-name">{{item.name}}</view>
+        <view class="product__en-name">{{item.enname}}</view>
+      </view>
+      <view class="product__price">¥ {{item.price}}</view>
+    </view>
+  </block>
+</view>

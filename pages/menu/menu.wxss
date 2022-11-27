@@ -25,6 +25,9 @@
   color: #0037ae;
 }
 
+.product-list{
+  overflow: auto;
+}
 .product{
   display: flex;
   align-items: center;

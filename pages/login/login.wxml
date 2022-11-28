@@ -3,12 +3,30 @@
   <view class="title">欢迎回来!</view>
   <view class="sub-title">Please login to your accounts</view>
   <van-cell-group class="form" border="{{false}}">
-    <van-field value="{{ phone }}" label="手机号" placeholder="请输入用户名" />
+    <van-field model:value="{{ phone }}" label="手机号" placeholder="请输入用户名" />
 
-    <van-field value="{{ password }}" label="密码" placeholder="密码必须为字母开头" type="{{passwordShow?'text':'password'}}" right-icon="{{passwordShow?'eye':'closed-eye'}}" bind:click-icon="onTapPasswordShow" />
+    <van-field model:value="{{ password }}" label="密码" placeholder="密码必须为字母开头" type="{{passwordShow?'text':'password'}}" right-icon="{{passwordShow?'eye':'closed-eye'}}" bind:click-icon="onTapPasswordShow" />
 
-    <text class="forget">忘记密码?</text>
+    <text class="forget" bind:click="onForgetTap">忘记密码?</text>
   </van-cell-group>
-  <van-button class="btn btn--login" type="primary" size="large" color="#0037ae" round>登录</van-button>
-  <van-button class="btn btn--register" size="large" round>注册</van-button>
+  <van-button class="btn btn--login" type="primary" size="large" color="#0037ae" round bind:click="onLoginTap">登录</van-button>
+  <van-button class="btn btn--register" size="large" round bind:click="onRegisterTap">注册</van-button>
 </view>
+
+<van-popup show="{{ registerPopupShow }}" closeable position="bottom" bind:close="onRegisterClose">
+  <view class="register-popup">
+    <view class="register__title">注册</view>
+    <van-cell-group class="form" border="{{false}}">
+      <van-field model:value="{{ reg_phone }}" label="手机号" placeholder="请输入用户名" />
+
+      <van-field model:value="{{ reg_password }}" label="密码" placeholder="密码必须为字母开头" type="{{reg_passwordShow?'text':'password'}}" right-icon="{{reg_passwordShow?'eye':'closed-eye'}}" bind:click-icon="onTapRegisterPasswordShow" />
+
+      <van-field model:value="{{ reg_nickName }}" label="昵称" placeholder="昵称" />
+    </van-cell-group>
+    <view class="register__btn">
+      <van-button type="primary" size="large" color="#0037ae" round bind:click="onRealRegisterTap">注册</van-button>
+    </view>
+  </view>
+</van-popup>
+
+<van-dialog id="van-dialog" />

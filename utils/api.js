@@ -14,7 +14,7 @@ const request = (url, method = 'GET', data = {}) => new Promise(resolve => wx.re
   success: res => resolve(res.data)
 }))
 
-const register = (nickName, password, phone) => request('/register', 'POST', {
+const register = (phone, password, nickName) => request('/register', 'POST', {
   nickName,
   password,
   phone

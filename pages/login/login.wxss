@@ -26,3 +26,13 @@ page{
   color: #8e8e8e;
   font-size: small;
 }
+
+.register__title{
+  margin: 32rpx;
+  color: #595a5b;
+  font-size: 48rpx;
+  font-weight: bold;
+}
+.register__btn{
+  margin: 64rpx 32rpx 32rpx;
+}

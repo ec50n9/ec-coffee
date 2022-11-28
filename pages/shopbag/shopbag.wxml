@@ -13,7 +13,7 @@
         <view class="product__en-name">{{item.enname}}</view>
         <view class="product__bottom">
           <text class="product__price">¥ {{item.price}}</text>
-          <van-stepper class="num-stepper" minus-class="num-stepper__minus" plus-class="num-stepper__plus" theme="round" button-size="40rpx" value="{{ item.count }}" bind:change="onNumChange" />
+          <van-stepper class="num-stepper" minus-class="num-stepper__minus" plus-class="num-stepper__plus" theme="round" button-size="40rpx" value="{{ item.count }}" bind:change="onNumChange" data-index="{{index}}" />
         </view>
       </view>
     </view>
@@ -27,3 +27,5 @@
   <van-checkbox value="{{ isSelectAll }}" bind:change="onChangeSelectAll" checked-color="#0037ae">全选</van-checkbox>
   <!-- <view slot="tip">您的收货地址不支持同城送, <text>修改地址</text></view> -->
 </van-submit-bar>
+
+<van-toast id="van-toast" />

@@ -1,5 +1,6 @@
 // pages/shopbag/shopbag.js
-import api from '../../utils/api'
+import api from '../../utils/api';
+import Toast from '@vant/weapp/toast/toast';
 
 Page({
 
@@ -52,6 +53,26 @@ Page({
     this.setData({
       isSelectAll: this.data.selectedCount === this.data.products.length
     })
+  },
+
+  onNumChange(e){
+    const {index} = e.currentTarget.dataset
+    const {count: preCount, sid} = this.data.products[index]
+    const newCount = e.detail
+    this.setData({
+      [`products[${index}].count`]: newCount
+    })
+
+    api.modifyShopcartCount(sid, newCount)
+      .then(data=>{
+        if(data.code!==6000){
+          // 修改失败, 恢复原数值
+          this.setData({
+            [`products[${index}].count`]: preCount
+          })
+          Toast.fail(data.msg)
+        }
+      })
   },
 
   /**

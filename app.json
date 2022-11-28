@@ -5,7 +5,8 @@
     "pages/shopbag/shopbag",
     "pages/my/my",
     "pages/search/search",
-    "pages/detail/detail"
+    "pages/detail/detail",
+    "pages/login/login"
   ],
   "window":{
     "backgroundTextStyle":"light",

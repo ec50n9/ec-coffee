@@ -13,6 +13,7 @@ Page({
     form: {
       tem: '冷',
       sugar: '',
+      count: 1
     },
   },
 
@@ -53,6 +54,12 @@ Page({
   onClickButton() {
     Toast('点击按钮')
   },
+  onClickAddShopCart(){
+    const {pid, form} = this.data
+    api.addShopcart(pid, form.count, [form.tem, form.sugar])
+      .then(data=>Toast(data.msg))
+  },
+  onClickBuy(){},
   onTapTemSpec(e) {
     const value = e.currentTarget.dataset.value;
     this.setData({
@@ -65,8 +72,8 @@ Page({
       'form.sugar': value
     })
   },
-  onNumChange() {
-
+  onNumChange(e) {
+    this.setData({'form.count': e.detail})
   },
 
   /**

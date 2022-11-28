@@ -1,8 +1,21 @@
 <!--pages/shopbag/shopbag.wxml-->
-<image class="header-img" src="../../icons/shopbag_bg.png" mode="widthFix"/>
+<image class="header-img" src="../../icons/shopbag_bg.png" mode="widthFix" />
 
 <view class="product-list">
-  <view class="product">
-    <van-checkbox value="{{ checked }}" bind:change="onCheckBoxChange">复选框</van-checkbox>
+  <block wx:for="{{products}}" wx:key="sid">
+    <view class="product">
+    <van-checkbox class="product__checkbox" value="{{ checked }}" bind:change="onCheckBoxChange" checked-color="#0037ae" />
+    <image class="product__img" src="{{item.small_img}}" mode="aspectFill" />
+    <view class="product__detail">
+      <view>
+        <text class="product__name">{{item.name}}</text><text class="product__rules">{{item.rule}}</text>
+      </view>
+      <view class="product__en-name">{{item.enname}}</view>
+      <view class="product__bottom">
+        <text class="product__price">¥ {{item.price}}</text>
+        <van-stepper class="num-stepper" minus-class="num-stepper__minus" plus-class="num-stepper__plus" theme="round" button-size="40rpx" value="{{ item.count }}" bind:change="onNumChange" />
+      </view>
+    </view>
   </view>
+  </block>
 </view>

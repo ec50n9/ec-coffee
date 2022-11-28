@@ -1,27 +1,26 @@
 // pages/shopbag/shopbag.js
+import api from '../../utils/api'
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    checked: true
+    products: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-
+    this.getAllShopCart()
   },
 
   getAllShopCart(){
-    wx.request({
-      url: 'http://www.kangliuyong.com:10002/findAllShopcart',
-      method: 'GET',
-      data: {
-        appkey: getApp().globalData.appkey
-      }
+    api.findAllShopcart().then(data=>{
+      console.log(data)
+      this.setData({products: data.result})
     })
   },
 

@@ -37,7 +37,7 @@
   <ec-line />
   <view class="num-wrapper">
     <text>选择数量</text>
-    <van-stepper class="num-stepper" minus-class="num-stepper__minus" plus-class="num-stepper__plus" theme="round" button-size="40rpx" value="{{ 1 }}" bind:change="onNumChange" />
+    <van-stepper class="num-stepper" minus-class="num-stepper__minus" plus-class="num-stepper__plus" theme="round" button-size="40rpx" value="{{ form.count }}" bind:change="onNumChange" />
   </view>
   <ec-line />
   <view class="desc">
@@ -54,8 +54,8 @@
 <van-goods-action>
   <van-goods-action-icon icon="chat-o" text="购物袋" bind:click="onClickIcon" />
   <van-goods-action-icon icon="cart-o" text="未收藏" bind:click="onClickIcon" />
-  <van-goods-action-button text="加入购物袋" color="#568ae6" type="warning" bind:click="onClickButton" />
-  <van-goods-action-button text="立即购买" color="#0037ae" bind:click="onClickButton" />
+  <van-goods-action-button text="加入购物袋" color="#568ae6" type="warning" bind:click="onClickAddShopCart" />
+  <van-goods-action-button text="立即购买" color="#0037ae" bind:click="onClickBuy" />
 </van-goods-action>
 
 <van-toast id="van-toast" />

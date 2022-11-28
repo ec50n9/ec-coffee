@@ -1,59 +1,45 @@
 const baseUrl = getApp().globalData.baseUrl;
 const appkey = getApp().globalData.appkey;
 
-const register = (nickName, password, phone) => new Promise(resolve => wx.request({
-  url: baseUrl + '/register',
-  method: 'POST',
+const request = (url, method = 'GET', data = {}) => new Promise(resolve => wx.request({
+  url: baseUrl + url,
+  method,
+  header: {
+    'content-type': 'application/x-www-form-urlencoded;charset=utf-8'
+  },
   data: {
     appkey,
-    nickName,
-    password,
-    phone
+    ...data
   },
   success: res => resolve(res.data)
 }))
 
-const productDetail = pid => new Promise(resolve => wx.request({
-  url: baseUrl + '/productDetail',
-  method: 'GET',
-  data: {
-    appkey,
-    pid
-  },
-  success: res => resolve(res.data)
-}))
+const register = (nickName, password, phone) => request('/register', 'POST', {
+  nickName,
+  password,
+  phone
+})
+const login = (phone, password) => request('/login', 'POST', {
+  phone,
+  password
+})
 
-const banner = () => new Promise(resolve => wx.request({
-  url: baseUrl + '/banner',
-  method: 'GET',
-  data: {
-    appkey
-  },
-  success: res => resolve(res.data)
-}))
+const productDetail = pid => request('/productDetail', 'GET', {
+  pid
+})
 
-const type = ()=>new Promise(resolve=>wx.request({
-  url: baseUrl+'/type',
-  method: 'GET',
-  data: {
-    appkey
-  },
-  success: res=>resolve(res.data)
-}))
+const banner = () => request('/banner')
 
-const typeProducts = (key, value) => new Promise(resolve => wx.request({
-  url: baseUrl + '/typeProducts',
-  method: 'GET',
-  data: {
-    appkey,
-    key,
-    value
-  },
-  success: res => resolve(res.data)
-}))
+const type = () => request('/type')
+
+const typeProducts = (key, value) => request('/typeProducts', 'GET', {
+  key,
+  value
+})
 
 module.exports = {
   register,
+  login,
   productDetail,
   banner,
   type,

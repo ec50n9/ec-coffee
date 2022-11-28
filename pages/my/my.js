@@ -14,9 +14,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    // api.register('shello', '123654', '123456')
+    // api.register('shello', '123654', '13727809535')
     //   .then((data) => {
-    //     console.log(data)
+    //     if(data.code===100){
+    //       // 注册成功
+    //     }else{
+    //       // 注册失败
+    //     }
     //   })
   },
 

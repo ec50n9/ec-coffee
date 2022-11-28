@@ -1,4 +1,6 @@
 // pages/my/my.js
+import api from '../../utils/api'
+
 Page({
 
   /**
@@ -12,7 +14,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-
+    // api.register('shello', '123654', '123456')
+    //   .then((data) => {
+    //     console.log(data)
+    //   })
   },
 
   /**

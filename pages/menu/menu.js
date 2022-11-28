@@ -1,4 +1,6 @@
 // pages/menu/menu.js
+import api from '../../utils/api'
+
 Page({
 
   /**
@@ -19,27 +21,17 @@ Page({
   },
 
   getCategorys() {
-    const that = this;
-    wx.request({
-      url: 'http://www.kangliuyong.com:10002/type',
-      method: 'GET',
-      data: {
-        appkey: getApp().globalData.appkey
-      },
-      success({
-        data
-      }) {
-        const categorys = data.result
-        categorys.unshift({
-          id: 0,
-          type: 'isHot',
-          typeDesc: '推荐'
-        })
-        that.setData({
-          categorys
-        })
-        that.getProducts()
-      }
+    api.type().then(data => {
+      const categorys = data.result
+      categorys.unshift({
+        id: 0,
+        type: 'isHot',
+        typeDesc: '推荐'
+      })
+      this.setData({
+        categorys
+      })
+      this.getProducts()
     })
   },
 
@@ -51,29 +43,20 @@ Page({
     this.getProducts()
   },
 
-  getProducts(){
-    const that = this;
-    wx.request({
-      url: 'http://www.kangliuyong.com:10002/typeProducts',
-      method: 'GET',
-      data: {
-        appkey: getApp().globalData.appkey,
-        key: that.data.currentType === 'isHot' ? 'isHot' : 'type',
-        value: that.data.currentType === 'isHot' ? 1 : that.data.currentType
-      },
-      success({
-        data
-      }) {
+  getProducts() {
+    api.typeProducts(
+        this.data.currentType === 'isHot' ? 'isHot' : 'type',
+        this.data.currentType === 'isHot' ? 1 : this.data.currentType
+      )
+      .then(data => {
         const products = data.result
-        console.log(products)
-        that.setData({
+        this.setData({
           products
         })
-      }
-    })
+      })
   },
 
-  onTapProduct(e){
+  onTapProduct(e) {
     const pid = e.currentTarget.dataset.pid;
     wx.navigateTo({
       url: `../detail/detail?pid=${pid}`,

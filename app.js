@@ -15,6 +15,7 @@ App({
   },
   globalData: {
     userInfo: null,
+    baseUrl: 'http://www.kangliuyong.com:10002',
     appkey: 'U2FsdGVkX19WSQ59Cg+Fj9jNZPxRC5y0xB1iV06BeNA='
   }
 })

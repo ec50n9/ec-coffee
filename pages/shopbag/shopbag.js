@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    checked: true
   },
 
   /**
@@ -13,6 +13,20 @@ Page({
    */
   onLoad(options) {
 
+  },
+
+  getAllShopCart(){
+    wx.request({
+      url: 'http://www.kangliuyong.com:10002/findAllShopcart',
+      method: 'GET',
+      data: {
+        appkey: getApp().globalData.appkey
+      }
+    })
+  },
+
+  onCheckBoxChange(e){
+    this.setData({checked: e.detail})
   },
 
   /**

@@ -1,4 +1,6 @@
 // pages/home/home.js
+import api from '../../utils/api'
+
 Page({
 
   /**
@@ -6,8 +8,8 @@ Page({
    */
   data: {
     searchValue: "",
-    bannerList:[],
-    coffeeList:[]
+    bannerList: [],
+    coffeeList: []
   },
 
   /**
@@ -18,51 +20,25 @@ Page({
     this.getCoffeeList();
   },
 
-  getBannerList(){
-    let that = this;
-    wx.request({
-      url: 'http://www.kangliuyong.com:10002/banner',
-      method: 'GET',
-      data: {
-        appkey: getApp().globalData.appkey
-      },
-      header: {
-        'content-type': 'applicantion/json'
-      },
-      success({data}){
-        that.setData({
-          bannerList: data.result
-        })
-      }
-    })
+  getBannerList() {
+    api.banner()
+      .then(data => this.setData({
+        bannerList: data.result
+      }))
   },
-  getCoffeeList(){
-    const that = this;
-    wx.request({
-      url: 'http://www.kangliuyong.com:10002/typeProducts',
-      method: 'GET',
-      data: {
-        appkey: getApp().globalData.appkey,
-        key: 'isHot',
-        value: 1
-      },
-      header: {
-        'content-type': 'applicantion/json'
-      },
-      success({data}){
-        that.setData({
-          coffeeList: data.result
-        })
-      }
-    })
+  getCoffeeList() {
+    api.typeProducts('isHot', 1)
+      .then(data => this.setData({
+        coffeeList: data.result
+      }))
   },
-  handleSearch(e){
+  handleSearch(e) {
     console.log(e)
     wx.navigateTo({
       url: '../search/search',
     })
   },
-  handleToDetail(e){
+  handleToDetail(e) {
     const pid = e.currentTarget.dataset.pid;
     wx.navigateTo({
       url: `../detail/detail?pid=${pid}`,

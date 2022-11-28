@@ -1,2 +1,8 @@
 <!--pages/shopbag/shopbag.wxml-->
-<text>pages/shopbag/shopbag.wxml</text>
+<image class="header-img" src="../../icons/shopbag_bg.png" mode="widthFix"/>
+
+<view class="product-list">
+  <view class="product">
+    <van-checkbox value="{{ checked }}" bind:change="onCheckBoxChange">复选框</van-checkbox>
+  </view>
+</view>

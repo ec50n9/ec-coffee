@@ -1,5 +1,6 @@
 // pages/detail/detail.js
 import Toast from '@vant/weapp/toast/toast';
+import api from '../../utils/api';
 
 Page({
 
@@ -19,51 +20,52 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    console.log(options.pid)
     this.setData({
       pid: options.pid
     })
     this.getCoffeeDetail()
   },
-  getCoffeeDetail(){
-    const that = this;
-    wx.request({
-      url: 'http://www.kangliuyong.com:10002/productDetail',
-      method: 'GET',
-      data: {
-        appkey: getApp().globalData.appkey,
-        pid: that.data.pid
-      },
-      success({data}){
+  getCoffeeDetail() {
+    api.productDetail(this.data.pid)
+      .then(data => {
         const detail = data.result[0];
         detail.tem = detail.tem.split('/')
         detail.sugar = detail.sugar.split('/')
-        that.setData({detail})
-        if(detail.tem.length){
-          that.setData({'form.tem': detail.tem[0]})
+        this.setData({
+          detail
+        })
+        if (detail.tem.length) {
+          this.setData({
+            'form.tem': detail.tem[0]
+          })
         }
-        if(detail.sugar.length){
-          that.setData({'form.sugar': detail.sugar[0]})
+        if (detail.sugar.length) {
+          this.setData({
+            'form.sugar': detail.sugar[0]
+          })
         }
-      }
-    })
+      })
   },
 
-  onClickIcon(){
+  onClickIcon() {
     Toast('点击图标')
   },
-  onClickButton(){
+  onClickButton() {
     Toast('点击按钮')
   },
-  onTapTemSpec(e){
+  onTapTemSpec(e) {
     const value = e.currentTarget.dataset.value;
-    this.setData({'form.tem': value})
+    this.setData({
+      'form.tem': value
+    })
   },
-  onTapSugarSpec(e){
+  onTapSugarSpec(e) {
     const value = e.currentTarget.dataset.value;
-    this.setData({'form.sugar': value}) 
+    this.setData({
+      'form.sugar': value
+    })
   },
-  onNumChange(){
+  onNumChange() {
 
   },
 

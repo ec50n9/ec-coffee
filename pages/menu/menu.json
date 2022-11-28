@@ -1,4 +1,5 @@
 {
+  "navigationBarTitleText": "菜单",
   "usingComponents": {
     "van-search": "@vant/weapp/search/index"
   }

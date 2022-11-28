@@ -1,4 +1,5 @@
 {
+  "navigationBarTitleText": "购物袋",
   "usingComponents": {
     "van-checkbox": "@vant/weapp/checkbox/index",
     "van-stepper": "@vant/weapp/stepper/index"

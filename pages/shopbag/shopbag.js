@@ -26,7 +26,9 @@ Page({
       const products = data.result
       products.forEach(product => product.checked = false)
       this.setData({
-        products
+        products,
+        selectedCount: 0,
+        isSelectAll: false
       })
     })
   },

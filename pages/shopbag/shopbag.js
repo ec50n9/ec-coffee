@@ -8,6 +8,7 @@ Page({
    */
   data: {
     products: [],
+    selectedCount: 0,
     isSelectAll: false
   },
 
@@ -15,7 +16,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    this.getAllShopCart()
+
   },
 
   getAllShopCart() {
@@ -31,6 +32,7 @@ Page({
 
   onChangeSelectAll(e) {
     this.setData({
+      selectedCount: e.detail ? this.data.products.length : 0,
       isSelectAll: e.detail,
       products: this.data.products.map(product => {
         product.checked = e.detail
@@ -40,12 +42,15 @@ Page({
   },
 
   onCheckBoxChange(e) {
-    console.log(e)
     const {
       index
     } = e.currentTarget.dataset
     this.setData({
+      selectedCount: this.data.selectedCount + (e.detail ? 1 : -1),
       [`products[${index}].checked`]: e.detail
+    })
+    this.setData({
+      isSelectAll: this.data.selectedCount === this.data.products.length
     })
   },
 
@@ -60,7 +65,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-
+    this.getAllShopCart()
   },
 
   /**

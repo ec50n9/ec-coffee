@@ -3,6 +3,12 @@
   width: 100%;
 }
 
+.product-list__footer{
+  padding: 24rpx 24rpx 136rpx;
+  color: #8e8e8e;
+  font-size: smaller;
+  text-align: center;
+}
 .product{
   display: flex;
   margin: 24rpx;
@@ -35,7 +41,7 @@
   flex-grow: 1;
   margin-top: 8rpx;
   color: #8e8e8e;
-  font-size: small;
+  font-size: smaller;
 }
 .product__bottom{
   display: flex;
@@ -54,4 +60,12 @@
 }
 .num-stepper__plus{
   background-color: #0037ae !important;
+}
+
+.submit-price{
+  color: #0037ae !important;
+}
+.submit-btn{
+  background-color: #0037ae !important;
+  border-color: #0037ae !important;
 }

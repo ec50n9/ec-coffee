@@ -4,18 +4,26 @@
 <view class="product-list">
   <block wx:for="{{products}}" wx:key="sid">
     <view class="product">
-    <van-checkbox class="product__checkbox" value="{{ checked }}" bind:change="onCheckBoxChange" checked-color="#0037ae" />
-    <image class="product__img" src="{{item.small_img}}" mode="aspectFill" />
-    <view class="product__detail">
-      <view>
-        <text class="product__name">{{item.name}}</text><text class="product__rules">{{item.rule}}</text>
-      </view>
-      <view class="product__en-name">{{item.enname}}</view>
-      <view class="product__bottom">
-        <text class="product__price">¥ {{item.price}}</text>
-        <van-stepper class="num-stepper" minus-class="num-stepper__minus" plus-class="num-stepper__plus" theme="round" button-size="40rpx" value="{{ item.count }}" bind:change="onNumChange" />
+      <van-checkbox class="product__checkbox" value="{{ item.checked }}" bind:change="onCheckBoxChange" data-index="{{index}}" checked-color="#0037ae" />
+      <image class="product__img" src="{{item.small_img}}" mode="aspectFill" />
+      <view class="product__detail">
+        <view>
+          <text class="product__name">{{item.name}}</text><text class="product__rules">{{item.rule}}</text>
+        </view>
+        <view class="product__en-name">{{item.enname}}</view>
+        <view class="product__bottom">
+          <text class="product__price">¥ {{item.price}}</text>
+          <van-stepper class="num-stepper" minus-class="num-stepper__minus" plus-class="num-stepper__plus" theme="round" button-size="40rpx" value="{{ item.count }}" bind:change="onNumChange" />
+        </view>
       </view>
     </view>
-  </view>
   </block>
+  <view class="product-list__footer">
+    哎呀, 没有数据可加载了!
+  </view>
 </view>
+
+<van-submit-bar price="{{ 3050 }}" price-class="submit-price" button-text="提交订单" button-class="submit-btn" bind:submit="onClickButton" tip="{{ true }}">
+  <van-checkbox value="{{ isSelectAll }}" bind:change="onChangeSelectAll" checked-color="#0037ae">全选</van-checkbox>
+  <!-- <view slot="tip">您的收货地址不支持同城送, <text>修改地址</text></view> -->
+</van-submit-bar>

@@ -2,6 +2,7 @@
   "navigationBarTitleText": "购物袋",
   "usingComponents": {
     "van-checkbox": "@vant/weapp/checkbox/index",
-    "van-stepper": "@vant/weapp/stepper/index"
+    "van-stepper": "@vant/weapp/stepper/index",
+    "van-submit-bar": "@vant/weapp/submit-bar/index"
   }
 }

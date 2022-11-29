@@ -1,0 +1,109 @@
+/* pages/commit/commit.wxss */
+.card {
+  margin: 24rpx;
+  padding: 24rpx;
+  color: #595a5b;
+  background-color: #fff;
+  border-radius: 24rpx;
+}
+
+.van-icon {
+  color: #8e8e8e;
+}
+
+.product {
+  display: flex;
+  gap: 24rpx;
+  margin: 24rpx 0;
+}
+
+.product__img {
+  flex-shrink: 0;
+  width: 172rpx;
+}
+
+.product__detail {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.product__rule {
+  margin-left: 16rpx;
+  color: #8e8e8e;
+  font-size: smaller;
+  vertical-align: top;
+}
+
+.product__en-name {
+  flex-grow: 1;
+  color: #8e8e8e;
+  font-size: small;
+  max-width: 400rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.product__price {
+  color: #0037ae;
+  font-weight: bold;
+}
+
+.product__count {
+  flex-shrink: 0;
+  align-self: flex-end;
+  font-size: smaller;
+  color: #8e8e8e;
+}
+
+.products-card {
+  margin-bottom: 0;
+  border-radius: 24rpx 24rpx 0 0;
+}
+.count-card{
+  margin-top: 0;
+  border-radius: 0 0 24rpx 24rpx;
+  color: #8e8e8e;
+  font-size: smaller;
+}
+
+.date{
+  color: #595a5b;
+}
+.count-text{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 24rpx;
+}
+.price-sum{
+  color: #0037ae;
+  font-size: medium;
+  font-weight: bold;
+}
+
+.hr {
+  --bg-color: #fff;
+  --egg-color: transparent;
+  height: 24rpx;
+  margin: 0 24rpx;
+  padding: 24rpx 24rpx 0;
+  background:
+    radial-gradient(48rpx at 0 24rpx, var(--egg-color) 24rpx, var(--bg-color) 0rpx) left,
+    radial-gradient(48rpx at 100% 24rpx, var(--egg-color) 24rpx, var(--bg-color) 0rpx) right;
+  background-size: 50% 100%;
+  background-repeat: no-repeat;
+}
+.hr__line{
+  width: 100%;
+  border-bottom: 2rpx dashed rgba(0, 0, 0, 0.2);
+}
+
+.bottom-bar{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 0rpx 24rpx 32rpx;
+}

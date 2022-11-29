@@ -43,6 +43,8 @@ const login = (phone, password) => request('/login', 'POST', {
   phone,
   password
 })
+const logout = () => requestWithLogin('/logout', 'POST')
+const destroyAccount = () => requestWithLogin('/destroyAccount', 'POST')
 const search = name => request('/search', 'GET', {
   name
 })
@@ -82,14 +84,64 @@ const removeShopcart = sids => requestWithLogin('/removeShopcart', 'POST', {
 const deleteShopcart = sids => requestWithLogin('/deleteShopcart', 'POST', {
   sids: JSON.stringify(sids)
 })
+const shopcartRows = () => requestWithLogin('/shopcartRows')
+const addAddress = (name, tel, province, city, county, addressDetail, areaCode, postalCode, isDefault) => requestWithLogin('/addAddress', 'POST', {
+  name,
+  tel,
+  province,
+  city,
+  county,
+  addressDetail,
+  areaCode,
+  postalCode,
+  isDefault
+})
+const deleteAddress = aid => requestWithLogin('/deleteAddress', 'POST', {
+  aid
+})
+const findAddress = () => requestWithLogin('/findAddress')
+const editAddress = (aid, name, tel, province, city, county, addressDetail, areaCode, postalCode, isDefault) => requestWithLogin('/editAddress', 'POST', {
+  aid,
+  name,
+  tel,
+  province,
+  city,
+  county,
+  addressDetail,
+  areaCode,
+  postalCode,
+  isDefault
+})
+const findAddressByAid = aid => requestWithLogin('/findAddressByAid', 'GET', {
+  aid
+})
+const commitShopcart = sids => requestWithLogin('/commitShopcart', 'GET', {
+  sids: JSON.stringify(sids)
+})
+const pay = (sids, phone, address, receiver) => requestWithLogin('/pay', 'POST', {
+  sids: JSON.stringify(sids),
+  phone,
+  address,
+  receiver
+})
+const findOrder = status => requestWithLogin('/findOrder', 'GET', {
+  status
+})
+const receive = oid => requestWithLogin('/receive', 'POST', {
+  oid
+})
+const removeOrder = oid => requestWithLogin('/removeOrder', 'POST', {
+  oid
+})
 
 // 我的
-const findMy = ()=>requestWithLogin('/findMy')
-const findAccountInfo = ()=>requestWithLogin('/findAccountInfo')
+const findMy = () => requestWithLogin('/findMy')
+const findAccountInfo = () => requestWithLogin('/findAccountInfo')
 
 module.exports = {
   register,
   login,
+  logout,
   productDetail,
   banner,
   type,
@@ -105,6 +157,17 @@ module.exports = {
   modifyShopcartCount,
   removeShopcart,
   deleteShopcart,
+  shopcartRows,
+  addAddress,
+  deleteAddress,
+  findAddress,
+  editAddress,
+  findAddressByAid,
+  commitShopcart,
+  pay,
+  findOrder,
+  receive,
+  removeOrder,
   findMy,
   findAccountInfo
 }

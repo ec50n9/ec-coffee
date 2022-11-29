@@ -25,7 +25,7 @@
   </view>
 </view>
 
-<van-submit-bar price="{{ priceSum }}" price-class="submit-price" button-text="提交订单" button-class="submit-btn" bind:submit="onClickButton" tip="{{ true }}">
+<van-submit-bar price="{{ priceSum }}" price-class="submit-price" button-text="提交订单" button-class="submit-btn" bind:submit="onSubmit" tip="{{ true }}">
   <van-checkbox value="{{ isSelectAll }}" bind:change="onChangeSelectAll" checked-color="#0037ae">全选</van-checkbox>
   <!-- <view slot="tip">您的收货地址不支持同城送, <text>修改地址</text></view> -->
 </van-submit-bar>

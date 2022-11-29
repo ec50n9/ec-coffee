@@ -1,0 +1,38 @@
+<!--pages/commit/commit.wxml-->
+<view class="card">
+  <text>选择地址</text>
+  <van-icon name="arrow" color="#8e8e8e" />
+</view>
+
+<view class="card products-card">
+  <text>订单信息</text>
+  <block wx:for="{{products}}" wx:key="sid">
+    <view class="product">
+      <image class="product__img" src="{{item.small_img}}" mode="widthFix" />
+      <view class="product__detail">
+        <view>{{item.name}} <text class="product__rule">{{item.rule}}</text></view>
+        <view class="product__en-name">{{item.enname}}</view>
+        <view class="product__price">¥ {{item.price}}</view>
+      </view>
+      <view class="product__count">x{{item.count}}</view>
+    </view>
+  </block>
+</view>
+
+<view class="hr">
+  <view class="hr__line"/>
+</view>
+
+<view class="card count-card">
+  <view class="date">{{date}}</view>
+  <view class="count-text">
+    <text class="sum">共计 {{products.length}} 件</text>
+    <text class="price-sum">合计 ¥{{priceSum}}</text>
+  </view>
+</view>
+
+<view style="height: 136rpx;"/>
+
+<view class="bottom-bar">
+  <van-button type="primary" size="large" color="#0037ae" round bind:click="onLoginTap">立即结算</van-button>
+</view>

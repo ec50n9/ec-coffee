@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "订单结算",
+  "usingComponents": {
+    "van-icon": "@vant/weapp/icon/index",
+    "van-button": "@vant/weapp/button/index"
+  }
+}

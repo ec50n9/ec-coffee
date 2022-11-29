@@ -23,7 +23,6 @@ Page({
 
   getAllShopCart() {
     api.findAllShopcart().then(data => {
-      console.log(data)
       const products = data.result
       products.forEach(product => product.checked = false)
       this.setData({
@@ -115,6 +114,18 @@ Page({
       } else {
         Toast.fail(data.msg)
       }
+    })
+  },
+
+  onSubmit(){
+    const selectedSids = []
+    this.data.products.forEach(product=>{
+      if(product.checked){
+        selectedSids.push(product.sid)
+      }
+    })
+    wx.navigateTo({
+      url: '../commit/commit?sids='+JSON.stringify(selectedSids),
     })
   },
 

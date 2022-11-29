@@ -10,7 +10,8 @@ Page({
   data: {
     products: [],
     selectedCount: 0,
-    isSelectAll: false
+    isSelectAll: false,
+    priceSum: 0,
   },
 
   /**
@@ -28,7 +29,8 @@ Page({
       this.setData({
         products,
         selectedCount: 0,
-        isSelectAll: false
+        isSelectAll: false,
+        priceSum: 0
       })
     })
   },
@@ -42,6 +44,7 @@ Page({
         return product
       })
     })
+    this.countPriceSum()
   },
 
   onCheckBoxChange(e) {
@@ -55,6 +58,7 @@ Page({
     this.setData({
       isSelectAll: this.data.selectedCount === this.data.products.length
     })
+    this.countPriceSum()
   },
 
   onNumChange(e){
@@ -64,6 +68,7 @@ Page({
     this.setData({
       [`products[${index}].count`]: newCount
     })
+    this.countPriceSum()
 
     api.modifyShopcartCount(sid, newCount)
       .then(data=>{
@@ -72,9 +77,16 @@ Page({
           this.setData({
             [`products[${index}].count`]: preCount
           })
+          this.countPriceSum()
           Toast.fail(data.msg)
         }
       })
+  },
+
+  countPriceSum(){
+    let priceSum = 0
+    this.data.products.forEach(({checked, price, count})=>priceSum+=parseFloat(checked?price*count:0))
+    this.setData({priceSum:priceSum*100})
   },
 
   /**

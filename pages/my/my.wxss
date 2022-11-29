@@ -1,1 +1,47 @@
 /* pages/my/my.wxss */
+.bg{
+  width: 100%;
+}
+
+.content{
+  position: relative;
+  margin: -89rpx 24rpx 24rpx;
+  padding: 24rpx 24rpx 0rpx;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 24rpx;
+}
+.profile{
+  display: flex;
+  gap: 32rpx;
+}
+.user-img{
+  width: 124rpx;
+  border-radius: 50%;
+}
+.nick-name{
+  color: #0037ae;
+  font-size: large;
+  font-weight: bold;
+}
+.desc{
+  margin-top: 16rpx;
+  color: #8e8e8e;
+  font-size: smaller;
+}
+
+.setting-list{
+  margin-top: 40rpx;
+}
+.setting{
+  display: flex;
+  justify-content: space-between;
+  padding: 24rpx 0;
+  color: #595a5b;
+  border-bottom: 2rpx solid rgba(0, 0, 0, 0.1);
+}
+.setting:last-child{
+  border: none;
+}
+.van-icon{
+  color: #8e8e8e;
+}

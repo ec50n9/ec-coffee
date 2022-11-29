@@ -7,21 +7,40 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    settings:[
+      {
+        name: '个人资料',
+        path: '../search/search'
+      },{
+        name: '我的订单',
+        path: '../search/search'
+      },{
+        name: '我的收藏',
+        path: '../search/search'
+      },{
+        name: '地址管理',
+        path: '../search/search'
+      }
+    ],
+    userInfo: {}
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    // api.register('shello', '123654', '13727809535')
-    //   .then((data) => {
-    //     if(data.code===100){
-    //       // 注册成功
-    //     }else{
-    //       // 注册失败
-    //     }
-    //   })
+    api.findMy().then(data=>{
+      console.log(data)
+      const userInfo = data.result[0]
+      this.setData({userInfo})
+    })
+  },
+
+  onClickSetting(e){
+    const {path} = e.currentTarget.dataset;
+    wx.navigateTo({
+      url: path,
+    })
   },
 
   /**

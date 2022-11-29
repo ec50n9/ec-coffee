@@ -1,3 +1,21 @@
 <!--pages/my/my.wxml-->
-<text>pages/my/my.wxml</text>
-<navigator url="../login/login">login</navigator>
+<image class="bg" src="{{userInfo.userBg}}" mode="widthFix" />
+
+<view class="content">
+  <view class="profile">
+    <image class="user-img" src="{{userInfo.userImg}}" mode="widthFix" />
+    <view>
+      <view class="nick-name">{{userInfo.nickName}}</view>
+      <view class="desc">{{userInfo.desc?userInfo.desc: '这家伙很懒, 什么也没有留下!'}}</view>
+    </view>
+  </view>
+
+  <view class="setting-list">
+    <block wx:for="{{settings}}" wx:key="name">
+      <view class="setting" bindtap="onClickSetting" data-path="{{item.path}}">
+        <text class="setting__name">{{item.name}}</text>
+        <van-icon class="setting__icon" name="arrow" />
+      </view>
+    </block>
+  </view>
+</view>

@@ -83,6 +83,10 @@ const deleteShopcart = sids => requestWithLogin('/deleteShopcart', 'POST', {
   sids: JSON.stringify(sids)
 })
 
+// 我的
+const findMy = ()=>requestWithLogin('/findMy')
+const findAccountInfo = ()=>requestWithLogin('/findAccountInfo')
+
 module.exports = {
   register,
   login,
@@ -100,5 +104,7 @@ module.exports = {
   findAllShopcart,
   modifyShopcartCount,
   removeShopcart,
-  deleteShopcart
+  deleteShopcart,
+  findMy,
+  findAccountInfo
 }

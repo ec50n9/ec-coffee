@@ -61,9 +61,14 @@ Page({
     this.countPriceSum()
   },
 
-  onNumChange(e){
-    const {index} = e.currentTarget.dataset
-    const {count: preCount, sid} = this.data.products[index]
+  onNumChange(e) {
+    const {
+      index
+    } = e.currentTarget.dataset
+    const {
+      count: preCount,
+      sid
+    } = this.data.products[index]
     const newCount = e.detail
     this.setData({
       [`products[${index}].count`]: newCount
@@ -71,8 +76,8 @@ Page({
     this.countPriceSum()
 
     api.modifyShopcartCount(sid, newCount)
-      .then(data=>{
-        if(data.code!==6000){
+      .then(data => {
+        if (data.code !== 6000) {
           // 修改失败, 恢复原数值
           this.setData({
             [`products[${index}].count`]: preCount
@@ -83,10 +88,34 @@ Page({
       })
   },
 
-  countPriceSum(){
+  countPriceSum() {
     let priceSum = 0
-    this.data.products.forEach(({checked, price, count})=>priceSum+=parseFloat(checked?price*count:0))
-    this.setData({priceSum:priceSum*100})
+    this.data.products.forEach(({
+      checked,
+      price,
+      count
+    }) => priceSum += parseFloat(checked ? price * count : 0))
+    this.setData({
+      priceSum: priceSum * 100
+    })
+  },
+
+  onDeleteProduct(e) {
+    const {
+      index
+    } = e.currentTarget.dataset
+    const {
+      sid
+    } = this.data.products[index]
+
+    api.deleteShopcart([sid]).then(data => {
+      if (data.code === 7000) {
+        Toast.success('删除成功')
+        this.getAllShopCart()
+      } else {
+        Toast.fail(data.msg)
+      }
+    })
   },
 
   /**

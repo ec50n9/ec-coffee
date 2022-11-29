@@ -7,8 +7,10 @@
       <van-checkbox class="product__checkbox" value="{{ item.checked }}" bind:change="onCheckBoxChange" data-index="{{index}}" checked-color="#0037ae" />
       <image class="product__img" src="{{item.small_img}}" mode="aspectFill" />
       <view class="product__detail">
-        <view>
-          <text class="product__name">{{item.name}}</text><text class="product__rules">{{item.rule}}</text>
+        <view class="product__top">
+          <view class="product__name">{{item.name}}</view>
+          <view class="product__rules">{{item.rule}}</view>
+          <view class="product__delete" bindtap="onDeleteProduct" data-index="{{index}}"><van-icon name="delete-o" color="#8e8e8e" /></view>
         </view>
         <view class="product__en-name">{{item.enname}}</view>
         <view class="product__bottom">

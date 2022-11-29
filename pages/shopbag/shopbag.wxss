@@ -31,11 +31,22 @@
   margin-left: 24rpx;
   color: #595a5b;
 }
+
+.product__top{
+  display: flex;
+}
+.product__name{
+  flex-shrink: 0;
+}
 .product__rules{
+  flex-grow: 1;
   display: inline-block;
   margin-left: 24rpx;
   color: #8e8e8e;
   font-size: small;
+}
+.product__delete{
+  flex-shrink: 0;
 }
 .product__en-name{
   flex-grow: 1;

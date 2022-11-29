@@ -4,6 +4,7 @@
     "van-checkbox": "@vant/weapp/checkbox/index",
     "van-stepper": "@vant/weapp/stepper/index",
     "van-submit-bar": "@vant/weapp/submit-bar/index",
-    "van-toast": "@vant/weapp/toast/index"
+    "van-toast": "@vant/weapp/toast/index",
+    "van-icon": "@vant/weapp/icon/index"
   }
 }

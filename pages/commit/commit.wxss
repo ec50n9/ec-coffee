@@ -8,7 +8,9 @@
 }
 
 .van-icon {
+  display: inline-block;
   color: #8e8e8e;
+  margin-left: 16rpx;
 }
 
 .product {
@@ -106,4 +108,47 @@
   left: 0;
   right: 0;
   padding: 0rpx 24rpx 32rpx;
+}
+
+.address-wrapper{
+  padding: 32rpx;
+}
+.address__title{
+  margin: 0 0 32rpx;
+  color: #595a5b;
+  font-size: 40rpx;
+  font-weight: bold;
+}
+.address__new{
+  margin-top: 32rpx;
+}
+
+.address{
+  display: flex;
+  align-items: center;
+  padding: 24rpx 0;
+}
+.address__checkbox{
+  flex-shrink: 0;
+}
+.address__content{
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 16rpx;
+}
+.address__default{
+  display: inline-block;
+  padding: 0 16rpx;
+  text-align: center;
+  vertical-align: middle;
+  color: #fff;
+  font-size: smaller;
+  background-color: #0037ae;
+  border-radius: 999rpx;
+}
+.address__addr{
+  font-size: smaller;
+  color: #595a5b;
 }

@@ -1,7 +1,9 @@
 <!--pages/commit/commit.wxml-->
 <view class="card">
-  <text>选择地址</text>
-  <van-icon name="arrow" color="#8e8e8e" />
+  <view bindtap="onAddressPickerOpen">
+    <text>选择地址</text>
+    <van-icon name="arrow" color="#8e8e8e" />
+  </view>
 </view>
 
 <view class="card products-card">
@@ -20,7 +22,7 @@
 </view>
 
 <view class="hr">
-  <view class="hr__line"/>
+  <view class="hr__line" />
 </view>
 
 <view class="card count-card">
@@ -31,8 +33,24 @@
   </view>
 </view>
 
-<view style="height: 136rpx;"/>
+<view style="height: 136rpx;" />
 
 <view class="bottom-bar">
   <van-button type="primary" size="large" color="#0037ae" round bind:click="onLoginTap">立即结算</van-button>
 </view>
+
+<van-popup show="{{ addressPickerShow }}" position="bottom" closeable bind:close="onAddressPickerClose">
+  <view class="address-wrapper">
+    <view class="address__title">选择地址</view>
+    <block>
+      <view class="address">
+        <van-checkbox class="address__checkbox" value="{{ false }}" bind:change="onCheckBoxChange" data-index="{{index}}" checked-color="#0037ae" />
+        <view class="address__content">
+          <text class="address__info">爱丽丝 123456 <text class="address__default">默认</text></text>
+          <text class="address__addr">内蒙古自治区</text>
+        </view>
+      </view>
+    </block>
+    <van-button class="address__new" type="primary" size="large" color="#0037ae" round bind:click="onLoginTap">新增地址</van-button>
+  </view>
+</van-popup>

@@ -10,7 +10,8 @@ Page({
   data: {
     products: [],
     priceSum: 0,
-    date: util.formatTime(new Date())
+    date: util.formatTime(new Date()),
+    addressPickerShow: false
   },
 
   /**
@@ -19,9 +20,11 @@ Page({
   onLoad(options) {
     const sids = JSON.parse(options.sids)
     api.commitShopcart(sids).then(data=>{
-      console.log(data)
       this.setData({products: data.result})
       this.countPriceSum()
+    })
+    api.findAddress().then(data=>{
+      console.log(data)
     })
   },
 
@@ -34,6 +37,18 @@ Page({
     this.setData({
       priceSum
     })
+  },
+
+  onAddressPickerOpen(){
+    this.setData({addressPickerShow: true})
+  },
+
+  onAddressPickerClose(){
+    this.setData({addressPickerShow: false})
+  },
+
+  onCheckBoxChange(e){
+    const {index} = e.currentTarget.dataset
   },
 
   /**

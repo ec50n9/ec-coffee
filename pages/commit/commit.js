@@ -64,7 +64,7 @@ Page({
 
   onNewAddressTap() {
     wx.navigateTo({
-      url: '../edit-addr/edit-addr?mode=new',
+      url: '../edit-addr/edit-addr',
     })
   },
 
@@ -80,7 +80,6 @@ Page({
    */
   onShow() {
     api.findAddress().then(data => {
-      console.log(data)
       const addressList = data.result;
       for (let index = 0; index < addressList.length; index++) {
         const address = addressList[index]

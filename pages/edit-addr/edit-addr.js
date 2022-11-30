@@ -29,7 +29,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    if (options.mode === 'new') {
+    if (options.aid) {
+      console.log(options.aid)
+    }else{
       wx.setNavigationBarTitle({
         title: '新建地址',
       })

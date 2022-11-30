@@ -1,4 +1,4 @@
-// pages/my/my.js
+// pages/address/address.js
 import api from '../../utils/api'
 
 Page({
@@ -7,39 +7,24 @@ Page({
    * 页面的初始数据
    */
   data: {
-    settings:[
-      {
-        name: '个人资料',
-        path: '../search/search'
-      },{
-        name: '我的订单',
-        path: '../search/search'
-      },{
-        name: '我的收藏',
-        path: '../search/search'
-      },{
-        name: '地址管理',
-        path: '../address/address'
-      }
-    ],
-    userInfo: {}
+    addressList: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    api.findMy().then(data=>{
-      console.log(data)
-      const userInfo = data.result[0]
-      this.setData({userInfo})
+    api.findAddress().then(data=>{
+      const addressList = data.result
+      console.log(addressList)
+      this.setData({addressList})
     })
   },
 
-  onClickSetting(e){
-    const {path} = e.currentTarget.dataset;
+  onEditAddress(e){
+    const {aid} = e.currentTarget.dataset
     wx.navigateTo({
-      url: path,
+      url: '../edit-addr/edit-addr?aid='+aid,
     })
   },
 

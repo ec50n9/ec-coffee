@@ -8,7 +8,8 @@
     "pages/detail/detail",
     "pages/login/login",
     "pages/commit/commit",
-    "pages/edit-addr/edit-addr"
+    "pages/edit-addr/edit-addr",
+    "pages/address/address"
   ],
   "window":{
     "backgroundTextStyle":"light",

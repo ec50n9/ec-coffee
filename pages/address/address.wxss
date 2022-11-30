@@ -1,0 +1,43 @@
+/* pages/address/address.wxss */
+.bg {
+  background-color: #0037ae;
+  height: 200rpx;
+  margin-bottom: -50rpx;
+}
+
+.card{
+  margin: 0 32rpx;
+  padding: 16rpx 32rpx;
+  background-color: #fff;
+  border-radius: 24rpx 24rpx 0 0;
+}
+
+.address{
+  display: flex;
+  align-items: center;
+  padding: 24rpx 0;
+  border-bottom: 2rpx solid rgba(0, 0, 0, 0.1);
+}
+.address:last-child{
+  border-bottom: none;
+}
+.address__content{
+  flex-grow: 1;
+  color: #595a5b;
+}
+.address__info{
+  display: flex;
+  align-items: center;
+  gap: 24rpx;
+}
+.address__default{
+  padding: 0 16rpx;
+  color: #fff;
+  font-size: small;
+  background-color: #0037ae;
+  border-radius: 999rpx;
+}
+.address__addr{
+  margin-top: 8rpx;
+  font-size: smaller;
+}

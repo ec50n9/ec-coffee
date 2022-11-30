@@ -152,3 +152,7 @@
   font-size: smaller;
   color: #595a5b;
 }
+
+.address__view{
+  padding-top: 24rpx;
+}

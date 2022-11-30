@@ -4,6 +4,14 @@
     <text>选择地址</text>
     <van-icon name="arrow" color="#8e8e8e" />
   </view>
+  <view class="address__content address__view">
+    <view class="address__info" style="display: flex; gap: 32rpx;">
+      <view style="color: #0037ae; font-weight: bold;">{{addressList[checkedAddrIndex].name}}</view>
+      <view>{{addressList[checkedAddrIndex].tel}}</view>
+      <view wx:if="{{addressList[checkedAddrIndex].isDefault}}" class="address__default">默认</view>
+    </view>
+    <text class="address__addr">{{addressList[checkedAddrIndex].province}}{{addressList[checkedAddrIndex].city}}{{addressList[checkedAddrIndex].county}}{{addressList[checkedAddrIndex].addressDetail}}</text>
+  </view>
 </view>
 
 <view class="card products-card">
@@ -42,12 +50,12 @@
 <van-popup show="{{ addressPickerShow }}" position="bottom" closeable bind:close="onAddressPickerClose">
   <view class="address-wrapper">
     <view class="address__title">选择地址</view>
-    <block>
-      <view class="address">
-        <van-checkbox class="address__checkbox" value="{{ false }}" bind:change="onCheckBoxChange" data-index="{{index}}" checked-color="#0037ae" />
+    <block wx:for="{{addressList}}" wx:key="aid">
+      <view class="address" bind:tap="onCheckBoxChange" data-index="{{index}}">
+        <van-checkbox class="address__checkbox" value="{{ checkedAddrIndex==index }}" checked-color="#0037ae" />
         <view class="address__content">
-          <text class="address__info">爱丽丝 123456 <text class="address__default">默认</text></text>
-          <text class="address__addr">内蒙古自治区</text>
+          <text class="address__info">{{item.name}} {{item.tel}} <text wx:if="{{item.isDefault}}" class="address__default">默认</text></text>
+          <text class="address__addr">{{item.province}}{{item.city}}{{item.county}}{{item.addressDetail}}</text>
         </view>
       </view>
     </block>

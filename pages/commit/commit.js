@@ -11,7 +11,9 @@ Page({
     products: [],
     priceSum: 0,
     date: util.formatTime(new Date()),
-    addressPickerShow: false
+    addressPickerShow: false,
+    addressList: [],
+    checkedAddrIndex: 0,
   },
 
   /**
@@ -19,12 +21,25 @@ Page({
    */
   onLoad(options) {
     const sids = JSON.parse(options.sids)
-    api.commitShopcart(sids).then(data=>{
-      this.setData({products: data.result})
+    api.commitShopcart(sids).then(data => {
+      this.setData({
+        products: data.result
+      })
       this.countPriceSum()
     })
-    api.findAddress().then(data=>{
+    api.findAddress().then(data => {
       console.log(data)
+      const addressList = data.result;
+      for (let index = 0; index < addressList.length; index++) {
+        const address = addressList[index]
+        if (address.isDefault) {
+          this.setData({
+            addressList,
+            checkedAddrIndex: index
+          })
+          break;
+        }
+      }
     })
   },
 
@@ -39,19 +54,29 @@ Page({
     })
   },
 
-  onAddressPickerOpen(){
-    this.setData({addressPickerShow: true})
+  onAddressPickerOpen() {
+    this.setData({
+      addressPickerShow: true
+    })
   },
 
-  onAddressPickerClose(){
-    this.setData({addressPickerShow: false})
+  onAddressPickerClose() {
+    this.setData({
+      addressPickerShow: false
+    })
   },
 
-  onCheckBoxChange(e){
-    const {index} = e.currentTarget.dataset
+  onCheckBoxChange(e) {
+    const {
+      index
+    } = e.currentTarget.dataset
+    this.setData({
+      checkedAddrIndex: index
+    })
+    this.onAddressPickerClose()
   },
 
-  onNewAddressTap(){
+  onNewAddressTap() {
     wx.navigateTo({
       url: '../edit-addr/edit-addr?mode=new',
     })

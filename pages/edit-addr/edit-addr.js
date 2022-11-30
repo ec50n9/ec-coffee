@@ -11,6 +11,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    aid: '',
     areaList,
     addrPickerShow: false,
     name: '',
@@ -29,9 +30,30 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    if (options.aid) {
-      console.log(options.aid)
-    }else{
+    const {
+      aid
+    } = options
+    if (aid) {
+      api.findAddressByAid(aid).then(data => {
+        if (data.code !== 40000) {
+          Toast.fail(data.msg)
+        }
+        const address = data.result[0]
+        this.setData({
+          aid,
+          name: address.name,
+          tel: address.tel,
+          province: address.province,
+          city: address.city,
+          county: address.county,
+          addressDetail: address.addressDetail,
+          areaCode: address.areaCode,
+          postalCode: address.postalCode,
+          isDefault: !!address.isDefault,
+          areaText: `${address.province} / ${address.city} / ${address.county}`
+        })
+      })
+    } else {
       wx.setNavigationBarTitle({
         title: '新建地址',
       })
@@ -73,8 +95,6 @@ Page({
   },
 
   saveAddr() {
-    console.log(this.data);
-  
     const {
       name,
       tel,
@@ -86,15 +106,33 @@ Page({
       postalCode,
       isDefault
     } = this.data;
+
     // 发起请求
-    api.addAddress(name, tel, province, city, county, addressDetail, areaCode, postalCode, isDefault)
+    const params = {
+      aid: '',
+      name,
+      tel,
+      province,
+      city,
+      county,
+      addressDetail,
+      areaCode,
+      postalCode,
+      isDefault
+    }
+
+    const aid = this.data.aid
+    if (aid) params.aid = aid
+    else delete params.aid
+
+    api[aid ? 'editAddress' : 'addAddress']
+      .apply(null, Object.values(params))
       .then(data => {
-        console.log(data)
-        if (data.code !== 9000) {
+        if (data.code !== (aid ? 30000 : 9000)) {
           Toast.fail(data.msg)
         } else {
           Toast.success(data.msg)
-          wx.navigateBack()
+          if (!aid) wx.navigateBack()
         }
       })
   },

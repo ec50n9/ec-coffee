@@ -94,7 +94,7 @@ const addAddress = (name, tel, province, city, county, addressDetail, areaCode, 
   addressDetail,
   areaCode,
   postalCode,
-  isDefault: isDefault?1:0
+  isDefault: isDefault ? 1 : 0
 })
 const deleteAddress = aid => requestWithLogin('/deleteAddress', 'POST', {
   aid
@@ -110,7 +110,7 @@ const editAddress = (aid, name, tel, province, city, county, addressDetail, area
   addressDetail,
   areaCode,
   postalCode,
-  isDefault
+  isDefault: isDefault ? 1 : 0
 })
 const findAddressByAid = aid => requestWithLogin('/findAddressByAid', 'GET', {
   aid

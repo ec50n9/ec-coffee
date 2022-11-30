@@ -1,11 +1,11 @@
 <!--pages/edit-addr/edit-addr.wxml-->
 <view style="display: flex; flex-direction: column; gap: 24rpx;padding-top:24rpx;">
   <van-cell-group inset>
-    <van-field model:value="{{ name }}" label="姓名" placeholder="收货人姓名" bind:change="onChange" />
-    <van-field model:value="{{ tel }}" label="电话" placeholder="收货人手机号" bind:change="onChange" />
+    <van-field model:value="{{ name }}" label="姓名" placeholder="收货人姓名" />
+    <van-field model:value="{{ tel }}" label="电话" placeholder="收货人手机号" />
     <van-cell title="地区" value="{{areaCode?areaText:'选择省/市/区'}}" is-link bind:click="showAddrPicker" />
-    <van-field model:value="{{ addressDetail }}" label="详细地址" placeholder="街道门牌、楼层房间号等信息" bind:change="onChange" />
-    <van-field model:value="{{ postalCode }}" label="邮政编码" placeholder="邮政编码" bind:change="onChange" />
+    <van-field model:value="{{ addressDetail }}" label="详细地址" placeholder="街道门牌、楼层房间号等信息" />
+    <van-field model:value="{{ postalCode }}" label="邮政编码" placeholder="邮政编码" />
   </van-cell-group>
 
   <van-cell-group inset>

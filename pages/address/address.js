@@ -14,11 +14,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    api.findAddress().then(data=>{
-      const addressList = data.result
-      console.log(addressList)
-      this.setData({addressList})
-    })
+
   },
 
   onEditAddress(e){
@@ -39,7 +35,10 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-
+    api.findAddress().then(data=>{
+      const addressList = data.result
+      this.setData({addressList})
+    })
   },
 
   /**

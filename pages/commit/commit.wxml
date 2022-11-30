@@ -51,6 +51,6 @@
         </view>
       </view>
     </block>
-    <van-button class="address__new" type="primary" size="large" color="#0037ae" round bind:click="onLoginTap">新增地址</van-button>
+    <van-button class="address__new" type="primary" size="large" color="#0037ae" round bind:click="onNewAddressTap">新增地址</van-button>
   </view>
 </van-popup>

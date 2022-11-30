@@ -94,7 +94,7 @@ const addAddress = (name, tel, province, city, county, addressDetail, areaCode, 
   addressDetail,
   areaCode,
   postalCode,
-  isDefault
+  isDefault: isDefault?1:0
 })
 const deleteAddress = aid => requestWithLogin('/deleteAddress', 'POST', {
   aid

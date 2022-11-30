@@ -51,6 +51,12 @@ Page({
     const {index} = e.currentTarget.dataset
   },
 
+  onNewAddressTap(){
+    wx.navigateTo({
+      url: '../edit-addr/edit-addr?mode=new',
+    })
+  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

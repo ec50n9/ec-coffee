@@ -27,20 +27,6 @@ Page({
       })
       this.countPriceSum()
     })
-    api.findAddress().then(data => {
-      console.log(data)
-      const addressList = data.result;
-      for (let index = 0; index < addressList.length; index++) {
-        const address = addressList[index]
-        if (address.isDefault) {
-          this.setData({
-            addressList,
-            checkedAddrIndex: index
-          })
-          break;
-        }
-      }
-    })
   },
 
   countPriceSum() {
@@ -93,7 +79,20 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-
+    api.findAddress().then(data => {
+      console.log(data)
+      const addressList = data.result;
+      for (let index = 0; index < addressList.length; index++) {
+        const address = addressList[index]
+        if (address.isDefault) {
+          this.setData({
+            addressList,
+            checkedAddrIndex: index
+          })
+          break;
+        }
+      }
+    })
   },
 
   /**

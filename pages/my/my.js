@@ -30,7 +30,6 @@ Page({
    */
   onLoad(options) {
     api.findMy().then(data=>{
-      console.log(data)
       const userInfo = data.result[0]
       this.setData({userInfo})
     })

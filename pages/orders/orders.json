@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "van-tab": "@vant/weapp/tab/index",
+    "van-tabs": "@vant/weapp/tabs/index",
+    "hr-line": "../../components/hr-line/hr-line",
+    "van-icon": "@vant/weapp/icon/index"
+  }
+}

@@ -1,0 +1,17 @@
+/* components/hr-line/hr-line.wxss */
+.hr {
+  --bg-color: #fff;
+  --egg-color: transparent;
+  height: 24rpx;
+  margin: 0 24rpx;
+  padding: 24rpx 24rpx 0;
+  background:
+    radial-gradient(48rpx at 0 24rpx, var(--egg-color) 24rpx, var(--bg-color) 0rpx) left,
+    radial-gradient(48rpx at 100% 24rpx, var(--egg-color) 24rpx, var(--bg-color) 0rpx) right;
+  background-size: 50% 100%;
+  background-repeat: no-repeat;
+}
+.hr__line{
+  width: 100%;
+  border-bottom: 2rpx dashed rgba(0, 0, 0, 0.2);
+}

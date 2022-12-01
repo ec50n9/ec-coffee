@@ -1,0 +1,4 @@
+<!--components/hr-line/hr-line.wxml-->
+<view class="hr">
+  <view class="hr__line" />
+</view>

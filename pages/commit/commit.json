@@ -4,6 +4,7 @@
     "van-icon": "@vant/weapp/icon/index",
     "van-button": "@vant/weapp/button/index",
     "van-popup": "@vant/weapp/popup/index",
-    "van-checkbox": "@vant/weapp/checkbox/index"
+    "van-checkbox": "@vant/weapp/checkbox/index",
+    "hr-line": "../../components/hr-line/hr-line"
   }
 }

@@ -8,6 +8,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    sids: [],
     products: [],
     priceSum: 0,
     date: util.formatTime(new Date()),
@@ -23,6 +24,7 @@ Page({
     const sids = JSON.parse(options.sids)
     api.commitShopcart(sids).then(data => {
       this.setData({
+        sids,
         products: data.result
       })
       this.countPriceSum()
@@ -65,6 +67,18 @@ Page({
   onNewAddressTap() {
     wx.navigateTo({
       url: '../edit-addr/edit-addr',
+    })
+  },
+
+  onCommitTap(){
+    const {sids, addressList, checkedAddrIndex} = this.data
+    const address = addressList[checkedAddrIndex]
+    const addrText = address.province+address.city+address.county+address.addressDetail
+    api.pay(sids, address.tel, addrText, address.name).then(data=>{
+      console.log(data)
+      if(data.code===60000){
+        wx.navigateBack()
+      }
     })
   },
 

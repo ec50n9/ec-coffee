@@ -1,0 +1,43 @@
+<!--pages/orders/orders.wxml-->
+<view class="bg" />
+
+<view class="tabs">
+  <van-tabs active="{{ activeTab }}" bind:change="onChangeTab" title-active-color="#0037ae" color="#0037ae">
+    <van-tab title="全部" name="all" />
+    <van-tab title="进行中" name="ing" />
+    <van-tab title="已完成" name="done" />
+  </van-tabs>
+</view>
+
+<view class="list">
+  <block wx:for="{{orders}}" wx:key="oid">
+    <view class="card products-card">
+      <view class="card-header">
+        <text style="flex-grow: 1;">{{item.oid}}</text>
+        <text style="margin-right: 24rpx;">确认收货</text>
+        <van-icon name="delete-o" size="40rpx" />
+      </view>
+      <block wx:for="{{item.products}}" wx:key="pid">
+        <view class="product">
+          <image class="product__img" src="{{item.smallImg}}" mode="widthFix" />
+          <view class="product__detail">
+            <view>{{item.name}} <text class="product__rule">{{item.rule}}</text></view>
+            <view class="product__en-name">{{item.enname}}</view>
+            <view class="product__price">¥ {{item.price}}</view>
+          </view>
+          <view class="product__count">x{{item.count}}</view>
+        </view>
+      </block>
+    </view>
+    <hr-line />
+    <view class="card count-card">
+      <view class="date">{{item.createdAt}}</view>
+      <view class="count-text">
+        <text class="sum">共计 {{item.products.length}} 件</text>
+        <text class="price-sum">合计 ¥{{item.priceSum}}</text>
+      </view>
+    </view>
+  </block>
+</view>
+
+<view style="height: 48rpx;"/>

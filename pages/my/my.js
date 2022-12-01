@@ -13,7 +13,7 @@ Page({
         path: '../search/search'
       },{
         name: '我的订单',
-        path: '../search/search'
+        path: '../orders/orders'
       },{
         name: '我的收藏',
         path: '../search/search'

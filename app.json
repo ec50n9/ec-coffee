@@ -9,7 +9,8 @@
     "pages/login/login",
     "pages/commit/commit",
     "pages/edit-addr/edit-addr",
-    "pages/address/address"
+    "pages/address/address",
+    "pages/orders/orders"
   ],
   "window":{
     "backgroundTextStyle":"light",

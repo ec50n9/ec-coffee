@@ -29,9 +29,7 @@
   </block>
 </view>
 
-<view class="hr">
-  <view class="hr__line" />
-</view>
+<hr-line/>
 
 <view class="card count-card">
   <view class="date">{{date}}</view>
@@ -44,7 +42,7 @@
 <view style="height: 136rpx;" />
 
 <view class="bottom-bar">
-  <van-button type="primary" size="large" color="#0037ae" round bind:click="onLoginTap">立即结算</van-button>
+  <van-button type="primary" size="large" color="#0037ae" round bind:click="onCommitTap">立即结算</van-button>
 </view>
 
 <van-popup show="{{ addressPickerShow }}" position="bottom" closeable bind:close="onAddressPickerClose">

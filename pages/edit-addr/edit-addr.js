@@ -95,33 +95,17 @@ Page({
   },
 
   saveAddr() {
-    const {
-      name,
-      tel,
-      province,
-      city,
-      county,
-      addressDetail,
-      areaCode,
-      postalCode,
-      isDefault
-    } = this.data;
-
     // 发起请求
     const params = {
-      aid: '',
-      name,
-      tel,
-      province,
-      city,
-      county,
-      addressDetail,
-      areaCode,
-      postalCode,
-      isDefault
+      aid: ''
     }
 
-    const aid = this.data.aid
+    const keys = ['name', 'tel', 'province', 'city', 'county', 'addressDetail', 'areaCode', 'postalCode', 'isDefault']
+    keys.forEach(key => params[key] = this.data[key])
+
+    const {
+      aid
+    } = this.data
     if (aid) params.aid = aid
     else delete params.aid
 

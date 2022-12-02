@@ -20,6 +20,9 @@ Page({
       },{
         name: '地址管理',
         path: '../address/address'
+      },{
+        name: '安全中心',
+        path: '../security/security'
       }
     ],
     userInfo: {}
@@ -29,10 +32,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    api.findMy().then(data=>{
-      const userInfo = data.result[0]
-      this.setData({userInfo})
-    })
+    
   },
 
   onClickSetting(e){
@@ -53,7 +53,10 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-
+    api.findMy().then(data=>{
+      const userInfo = data.result[0]
+      this.setData({userInfo})
+    })
   },
 
   /**

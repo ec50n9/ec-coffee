@@ -12,7 +12,8 @@
     "pages/address/address",
     "pages/orders/orders",
     "pages/profile/profile",
-    "pages/like/like"
+    "pages/like/like",
+    "pages/security/security"
   ],
   "window":{
     "backgroundTextStyle":"light",

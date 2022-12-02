@@ -32,8 +32,8 @@ Page({
     api.productDetail(this.data.pid)
       .then(data => {
         const detail = data.result[0];
-        detail.tem = detail.tem?detail.tem.split('/'):[]
-        detail.sugar = detail.sugar?detail.sugar.split('/'):[]
+        detail.tem = detail.tem ? detail.tem.split('/') : []
+        detail.sugar = detail.sugar ? detail.sugar.split('/') : []
         this.setData({
           detail
         })
@@ -57,7 +57,19 @@ Page({
     api.addShopcart(pid, form.count, [form.tem, form.sugar])
       .then(data => Toast(data.msg))
   },
-  onClickBuy() {},
+  onClickBuy() {
+    const {
+      pid,
+      form
+    } = this.data
+    api.addShopcart(pid, form.count, [form.tem, form.sugar])
+      .then(data => {
+        const selectedSids = [data.sid]
+        wx.navigateTo({
+          url: '../commit/commit?sids=' + JSON.stringify(selectedSids),
+        })
+      })
+  },
   onTapTemSpec(e) {
     const value = e.currentTarget.dataset.value;
     this.setData({
@@ -97,12 +109,12 @@ Page({
         isLike: data.code === 800
       })
       wx.showToast({
-        title: (this.data.isLike?'':'取消')+'收藏成功',
+        title: (this.data.isLike ? '' : '取消') + '收藏成功',
       })
     })
   },
 
-  goShopBag(){
+  goShopBag() {
     wx.redirectTo({
       url: '../shopbag/shopbag',
     })

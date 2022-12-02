@@ -137,6 +137,9 @@ const removeOrder = oid => requestWithLogin('/removeOrder', 'POST', {
 // 我的
 const findMy = () => requestWithLogin('/findMy')
 const findAccountInfo = () => requestWithLogin('/findAccountInfo')
+const updateNickName = nickName => requestWithLogin('/updateNickName', 'POST', {nickName})
+const updateDesc = desc=>requestWithLogin('/updateDesc', 'POST', {desc})
+const updatePassword = (password, oldPassword)=>requestWithLogin('/updatePassword', 'POST', {password, oldPassword})
 
 module.exports = {
   register,
@@ -169,5 +172,8 @@ module.exports = {
   receive,
   removeOrder,
   findMy,
-  findAccountInfo
+  findAccountInfo,
+  updateNickName,
+  updateDesc,
+  updatePassword
 }

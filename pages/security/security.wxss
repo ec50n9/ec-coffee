@@ -1,0 +1,16 @@
+/* pages/security/security.wxss */
+.bg {
+  background-color: #0037ae;
+  height: 200rpx;
+  margin-bottom: -50rpx;
+}
+
+.password__title{
+  margin: 32rpx;
+  color: #595a5b;
+  font-size: 48rpx;
+  font-weight: bold;
+}
+.password__btn{
+  margin: 64rpx 32rpx 32rpx;
+}

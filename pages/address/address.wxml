@@ -1,20 +1,20 @@
 <!--pages/address/address.wxml-->
-<view class="bg"/>
+<view class="bg" />
 
 <view class="card">
-<block wx:for="{{addressList}}" wx:key="aid">
-  <view class="address">
-    <view class="address__content">
-      <view class="address__info">
-        <text class="address__name">{{item.name}}</text>
-        <text class="address__tel">{{item.tel}}</text>
-        <text class="address__default" wx:if="{{item.isDefault}}">默认</text>
+  <block wx:for="{{addressList}}" wx:key="aid">
+    <view class="address">
+      <view class="address__content">
+        <view class="address__info">
+          <text class="address__name">{{item.name}}</text>
+          <text class="address__tel">{{item.tel}}</text>
+          <text class="address__default" wx:if="{{item.isDefault}}">默认</text>
+        </view>
+        <view class="address__addr">
+          {{item.province}}{{item.city}}{{item.county}}{{item.addressDetail}}
+        </view>
       </view>
-      <view class="address__addr">
-        {{item.province}}{{item.city}}{{item.county}}{{item.addressDetail}}
-      </view>
+      <van-icon class="address__edit" name="edit" bindtap="onEditAddress" data-aid="{{item.aid}}" />
     </view>
-    <van-icon class="address__edit" name="edit" bindtap="onEditAddress" data-aid="{{item.aid}}" />
-  </view>
-</block>
+  </block>
 </view>

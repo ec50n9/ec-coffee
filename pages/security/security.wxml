@@ -1,0 +1,25 @@
+<!--pages/security/security.wxml-->
+<view class="bg" />
+
+<van-cell-group inset>
+  <van-cell title="修改密码" is-link bindtap="showPasswordPopup" />
+  <van-cell title="注销账号" is-link />
+</van-cell-group>
+
+<view style="padding: 150rpx 32rpx 0;">
+  <van-button type="primary" size="large" color="#0037ae" round bind:click="onLogout">退出登录</van-button>
+</view>
+
+<van-popup show="{{ passwordPopupShow }}" closeable position="bottom" bind:close="onPasswordClose">
+  <view>
+    <view class="password__title">修改密码</view>
+    <van-cell-group class="form" border="{{false}}">
+      <van-field model:value="{{ originPassword }}" label="旧密码" placeholder="旧密码(首字符必须为字母)" type="{{originPasswordShow?'text':'password'}}" right-icon="{{originPasswordShow?'eye':'closed-eye'}}" bind:click-icon="onTapOriginPasswordShow" />
+
+      <van-field model:value="{{ newPassword }}" label="新密码" placeholder="新密码(首字符必须为字母)" type="{{newPasswordShow?'text':'password'}}" right-icon="{{newPasswordShow?'eye':'closed-eye'}}" bind:click-icon="onTapNewPasswordShow" />
+    </van-cell-group>
+    <view class="password__btn">
+      <van-button type="primary" size="large" color="#0037ae" round bind:click="onPasswordSubmitTap">提交</van-button>
+    </view>
+  </view>
+</van-popup>

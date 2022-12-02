@@ -1,0 +1,6 @@
+/* pages/profile/profile.wxss */
+.bg {
+  background-color: #0037ae;
+  height: 200rpx;
+  margin-bottom: -50rpx;
+}

@@ -7,6 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    nickName: '游客',
     bannerList: [],
     coffeeList: []
   },
@@ -31,13 +32,29 @@ Page({
         coffeeList: data.result
       }))
   },
+  getProfile() {
+    const token = wx.getStorageSync('token')
+    if (token) {
+      api.findMy().then(data => {
+        console.log(data);
+        if (data.code === 'A001') {
+          this.setData({
+            nickName: data.result[0].nickName
+          })
+          console.log(this.data)
+        }
+      })
+    }
+  },
   handleSearch(e) {
     wx.navigateTo({
       url: '../search/search',
     })
   },
   handleToDetail(e) {
-    const {pid} = e.currentTarget.dataset;
+    const {
+      pid
+    } = e.currentTarget.dataset;
     wx.navigateTo({
       url: `../detail/detail?pid=${pid}`,
     })
@@ -54,7 +71,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-
+    this.getProfile();
   },
 
   /**

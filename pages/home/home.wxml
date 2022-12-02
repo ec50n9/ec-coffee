@@ -2,7 +2,7 @@
 <view class="header">
   <view class="welcome-text">
     <text class="welcome__time">下午好</text>
-    <text class="welcome__name">Allen</text>
+    <text class="welcome__name">{{nickName}}</text>
   </view>
   <van-search class="search-bar" bindtap="handleSearch" shape="round" placeholder="输入商品名称" />
 </view>

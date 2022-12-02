@@ -32,8 +32,8 @@ Page({
     api.productDetail(this.data.pid)
       .then(data => {
         const detail = data.result[0];
-        detail.tem = detail.tem.split('/')
-        detail.sugar = detail.sugar.split('/')
+        detail.tem = detail.tem?detail.tem.split('/'):[]
+        detail.sugar = detail.sugar?detail.sugar.split('/'):[]
         this.setData({
           detail
         })
@@ -48,13 +48,6 @@ Page({
           })
         }
       })
-  },
-
-  onClickIcon() {
-    Toast('点击图标')
-  },
-  onClickButton() {
-    Toast('点击按钮')
   },
   onClickAddShopCart() {
     const {
@@ -106,6 +99,12 @@ Page({
       wx.showToast({
         title: (this.data.isLike?'':'取消')+'收藏成功',
       })
+    })
+  },
+
+  goShopBag(){
+    wx.redirectTo({
+      url: '../shopbag/shopbag',
     })
   },
 

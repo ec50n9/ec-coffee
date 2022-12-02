@@ -12,7 +12,7 @@
 
   <view class="rules">
     <!-- 温度选择器 -->
-    <view class="spec">
+    <view class="spec" wx:if="{{detail.tem.length}}">
       <text class="spec__name">{{detail.tem_desc}}</text>
       <view class="ec-chioce">
         <block wx:for="{{detail.tem}}" wx:key="*this">
@@ -23,7 +23,7 @@
       </view>
     </view>
     <!-- 糖度选择器 -->
-    <view class="spec">
+    <view class="spec" wx:if="{{detail.sugar.length}}">
       <text class="spec__name">{{detail.sugar_desc}}</text>
       <view class="ec-chioce">
         <block wx:for="{{detail.sugar}}" wx:key="*this">

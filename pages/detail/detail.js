@@ -10,6 +10,7 @@ Page({
   data: {
     pid: '',
     detail: {},
+    isLike: false,
     form: {
       tem: '冷',
       sugar: '',
@@ -25,6 +26,7 @@ Page({
       pid: options.pid
     })
     this.getCoffeeDetail()
+    this.checkIsLike()
   },
   getCoffeeDetail() {
     api.productDetail(this.data.pid)
@@ -54,12 +56,15 @@ Page({
   onClickButton() {
     Toast('点击按钮')
   },
-  onClickAddShopCart(){
-    const {pid, form} = this.data
+  onClickAddShopCart() {
+    const {
+      pid,
+      form
+    } = this.data
     api.addShopcart(pid, form.count, [form.tem, form.sugar])
-      .then(data=>Toast(data.msg))
+      .then(data => Toast(data.msg))
   },
-  onClickBuy(){},
+  onClickBuy() {},
   onTapTemSpec(e) {
     const value = e.currentTarget.dataset.value;
     this.setData({
@@ -73,7 +78,35 @@ Page({
     })
   },
   onNumChange(e) {
-    this.setData({'form.count': e.detail})
+    this.setData({
+      'form.count': e.detail
+    })
+  },
+
+  checkIsLike() {
+    const {
+      pid
+    } = this.data
+    api.findLike(pid).then(data => {
+      this.setData({
+        isLike: !!data.result.length
+      })
+    })
+  },
+
+  onLikeTap() {
+    const {
+      isLike,
+      pid
+    } = this.data
+    api[isLike ? 'notLike' : 'like'](pid).then(data => {
+      this.setData({
+        isLike: data.code === 800
+      })
+      wx.showToast({
+        title: (this.data.isLike?'':'取消')+'收藏成功',
+      })
+    })
   },
 
   /**

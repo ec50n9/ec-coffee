@@ -52,8 +52,8 @@
 <view style="height: 124rpx;" />
 
 <van-goods-action>
-  <van-goods-action-icon icon="chat-o" text="购物袋" bind:click="onClickIcon" />
-  <van-goods-action-icon icon="cart-o" text="未收藏" bind:click="onClickIcon" />
+  <van-goods-action-icon icon="chat-o" text="购物袋" bind:click="goShopBag" />
+  <van-goods-action-icon icon="cart-o" text="{{isLike?'已':'未'}}收藏" bind:click="onLikeTap" />
   <van-goods-action-button text="加入购物袋" color="#568ae6" type="warning" bind:click="onClickAddShopCart" />
   <van-goods-action-button text="立即购买" color="#0037ae" bind:click="onClickBuy" />
 </van-goods-action>

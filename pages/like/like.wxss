@@ -1,0 +1,54 @@
+/* pages/like/like.wxss */
+.bg {
+  background-color: #0037ae;
+  height: 200rpx;
+  margin-bottom: -50rpx;
+}
+
+.card{
+  margin: 0 32rpx;
+  padding: 12rpx;
+  background-color: #fff;
+  border-radius: 24rpx 24rpx 0 0;
+}
+
+.like-card{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.product{
+  padding: 12rpx;
+}
+.product__img{
+  width: 100%;
+}
+.product__name{
+  font-size: smaller;
+}
+.product__en-name{
+  width: 180rpx;
+  color: #595a5b;
+  font-size: x-small;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.product__price{
+  color: #0037ae;
+  font-size: smaller;
+  font-weight: bold;
+}
+.product__bottom{
+  display: flex;
+  justify-content: space-between;
+}
+.van-icon{
+  color: #595a5b;
+}
+
+.tip{
+  padding: 24rpx 0;
+  color: #595a5b;
+  text-align: center;
+}

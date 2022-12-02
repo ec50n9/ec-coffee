@@ -1,4 +1,4 @@
-// pages/my/my.js
+// pages/like/like.js'
 import api from '../../utils/api'
 
 Page({
@@ -7,38 +7,37 @@ Page({
    * 页面的初始数据
    */
   data: {
-    settings:[
-      {
-        name: '个人资料',
-        path: '../profile/profile'
-      },{
-        name: '我的订单',
-        path: '../orders/orders'
-      },{
-        name: '我的收藏',
-        path: '../like/like'
-      },{
-        name: '地址管理',
-        path: '../address/address'
-      }
-    ],
-    userInfo: {}
+    products: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    api.findMy().then(data=>{
-      const userInfo = data.result[0]
-      this.setData({userInfo})
+
+  },
+
+  getLike() {
+    api.findAllLike().then(data => {
+      this.setData({
+        products: data.result
+      })
     })
   },
 
-  onClickSetting(e){
-    const {path} = e.currentTarget.dataset;
+  onNotLike(e){
+    const {pid} = e.currentTarget.dataset
+    api.notLike(pid).then(data=>{
+      this.getLike()
+    })
+  },
+
+  goDetail(e) {
+    const {
+      pid
+    } = e.currentTarget.dataset
     wx.navigateTo({
-      url: path,
+      url: `../detail/detail?pid=${pid}`,
     })
   },
 
@@ -53,7 +52,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-
+    this.getLike()
   },
 
   /**

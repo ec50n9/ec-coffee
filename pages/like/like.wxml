@@ -1,0 +1,23 @@
+<!--pages/like/like.wxml-->
+<view class="header">
+  <van-search class="search-bar" custom-class="search-bar__custom" shape="round" placeholder="输入商品名称" model:value="{{searchValue}}" bind:search="handleSearch" />
+</view>
+
+<view class="bg" />
+
+<view class="card {{products.length?'like-card': ''}}">
+  <block wx:for="{{products}}" wx:key="id">
+    <view class="product" bindtap="goDetail" data-pid="{{item.pid}}">
+      <image class="product__img" src="{{item.smallImg}}" mode="widthFix" />
+      <view class="product__name">{{item.name}}</view>
+      <view class="product__en-name">{{item.enname}}</view>
+      <view class="product__bottom">
+        <view class="product__price">¥ {{item.price}}</view>
+        <van-icon name="delete-o" catchtap="onNotLike" data-pid="{{item.pid}}" />
+      </view>
+    </view>
+  </block>
+  <view wx:if="{{!products.length}}" class="tip">
+    没有收藏过任何商品哦～
+  </view>
+</view>

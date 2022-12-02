@@ -1,2 +1,17 @@
 <!--pages/search/search.wxml-->
-<text>pages/search/search.wxml</text>
+<view class="header">
+  <van-search class="search-bar" custom-class="search-bar__custom" shape="round" placeholder="输入商品名称" model:value="{{searchValue}}" bind:search="handleSearch" />
+</view>
+
+<view class="bg"/>
+
+<view class="card search-card">
+<block wx:for="{{results}}" wx:key="id">
+  <view class="product" bindtap="goDetail" data-pid="{{item.pid}}">
+    <image class="product__img" src="{{item.smallImg}}" mode="widthFix"/>
+    <view class="product__name">{{item.name}}</view>
+    <view class="product__en-name">{{item.enname}}</view>
+    <view class="product__price">¥ {{item.price}}</view>
+  </view>
+</block>
+</view>

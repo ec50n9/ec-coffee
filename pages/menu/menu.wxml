@@ -1,6 +1,6 @@
 <!--pages/menu/menu.wxml-->
 <view class="header">
-  <van-search class="search-bar" custom-class="search-bar__custom" shape="round" value="{{searchValue}}" placeholder="输入商品名称" />
+  <van-search class="search-bar" custom-class="search-bar__custom" shape="round" placeholder="输入商品名称" bindtap="handleSearch" />
 </view>
 
 <scroll-view class="category-list" scroll-x="true">

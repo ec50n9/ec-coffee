@@ -7,7 +7,6 @@ Page({
    * 页面的初始数据
    */
   data: {
-    searchValue: '',
     categorys: [],
     currentType: 'isHot',
     products: []
@@ -60,6 +59,12 @@ Page({
     const pid = e.currentTarget.dataset.pid;
     wx.navigateTo({
       url: `../detail/detail?pid=${pid}`,
+    })
+  },
+
+  handleSearch(e) {
+    wx.navigateTo({
+      url: '../search/search',
     })
   },
 

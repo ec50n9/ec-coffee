@@ -4,7 +4,7 @@
     <text class="welcome__time">下午好</text>
     <text class="welcome__name">Allen</text>
   </view>
-  <van-search class="search-bar" bindtap="handleSearch" shape="round" value="{{searchValue}}" placeholder="输入商品名称" />
+  <van-search class="search-bar" bindtap="handleSearch" shape="round" placeholder="输入商品名称" />
 </view>
 
 <view class="banner">

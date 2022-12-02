@@ -1,18 +1,36 @@
 // pages/search/search.js
+import api from '../../utils/api'
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    searchValue: '',
+    results: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
+    this.handleSearch({detail: ''})
+  },
 
+  handleSearch(e){
+    const name = e.detail
+    api.search(name).then(data=>{
+      console.log(data);
+      this.setData({results: data.result})
+    })
+  },
+
+  goDetail(e){
+    const {pid} = e.currentTarget.dataset
+    wx.navigateTo({
+      url: `../detail/detail?pid=${pid}`,
+    })
   },
 
   /**

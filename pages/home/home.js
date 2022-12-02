@@ -7,7 +7,6 @@ Page({
    * 页面的初始数据
    */
   data: {
-    searchValue: "",
     bannerList: [],
     coffeeList: []
   },
@@ -33,13 +32,12 @@ Page({
       }))
   },
   handleSearch(e) {
-    console.log(e)
     wx.navigateTo({
       url: '../search/search',
     })
   },
   handleToDetail(e) {
-    const pid = e.currentTarget.dataset.pid;
+    const {pid} = e.currentTarget.dataset;
     wx.navigateTo({
       url: `../detail/detail?pid=${pid}`,
     })

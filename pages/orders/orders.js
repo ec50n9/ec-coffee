@@ -24,6 +24,7 @@ Page({
       index
     } = event.detail
     this.getOrders(index)
+    this.setData({activeTab: index})
   },
 
   getOrders(status=0){
@@ -41,7 +42,8 @@ Page({
         if (!ordersMap[oid]) ordersMap[oid] = {
           products: [],
           priceSum: 0,
-          createdAt: util.formatTime(new Date(order.createdAt))
+          createdAt: util.formatTime(new Date(order.createdAt)),
+          status: order.status
         }
         ordersMap[oid].products.push(order)
         ordersMap[oid].priceSum += order.count * parseFloat(order.price)
@@ -52,13 +54,28 @@ Page({
           oid: key,
           products: ordersMap[key].products,
           priceSum: ordersMap[key].priceSum,
-          createdAt: ordersMap[key].createdAt
+          createdAt: ordersMap[key].createdAt,
+          status: ordersMap[key].status
         })
       }
 
       this.setData({
         orders
       })
+    })
+  },
+
+  onReceiveTap(e){
+    const {oid} = e.currentTarget.dataset
+    api.receive(oid).then(data=>{
+      this.getOrders(this.data.activeTab)
+    })
+  },
+
+  onRemoveOrder(e){
+    const {oid} = e.currentTarget.dataset
+    api.removeOrder(oid).then(data=>{
+      this.getOrders(this.data.activeTab)
     })
   },
 

@@ -14,8 +14,9 @@
     <view class="card products-card">
       <view class="card-header">
         <text style="flex-grow: 1;">{{item.oid}}</text>
-        <text style="margin-right: 24rpx;">确认收货</text>
-        <van-icon name="delete-o" size="40rpx" />
+        <text wx:if="{{item.status===1}}" bindtap="onReceiveTap" data-oid="{{item.oid}}">确认收货</text>
+        <text wx:else  style="margin-right: 24rpx;">已完成</text>
+        <van-icon wx:if="{{item.status===2}}" name="delete-o" size="40rpx" bindtap="onRemoveOrder" data-oid="{{item.oid}}" />
       </view>
       <block wx:for="{{item.products}}" wx:key="pid">
         <view class="product">

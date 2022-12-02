@@ -10,7 +10,9 @@
     "pages/commit/commit",
     "pages/edit-addr/edit-addr",
     "pages/address/address",
-    "pages/orders/orders"
+    "pages/orders/orders",
+    "pages/profile/profile",
+    "pages/like/like"
   ],
   "window":{
     "backgroundTextStyle":"light",

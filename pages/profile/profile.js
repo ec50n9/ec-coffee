@@ -1,4 +1,4 @@
-// pages/my/my.js
+// pages/profile/profile.js
 import api from '../../utils/api'
 
 Page({
@@ -7,38 +7,17 @@ Page({
    * 页面的初始数据
    */
   data: {
-    settings:[
-      {
-        name: '个人资料',
-        path: '../profile/profile'
-      },{
-        name: '我的订单',
-        path: '../orders/orders'
-      },{
-        name: '我的收藏',
-        path: '../search/search'
-      },{
-        name: '地址管理',
-        path: '../address/address'
-      }
-    ],
-    userInfo: {}
+    profile: {}
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    api.findMy().then(data=>{
-      const userInfo = data.result[0]
-      this.setData({userInfo})
-    })
-  },
-
-  onClickSetting(e){
-    const {path} = e.currentTarget.dataset;
-    wx.navigateTo({
-      url: path,
+    api.findAccountInfo().then(data=>{
+      const profile = data.result[0]
+      this.setData({profile})
+      console.log(data);
     })
   },
 

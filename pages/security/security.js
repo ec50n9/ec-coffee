@@ -1,5 +1,6 @@
 // pages/security/security.js
-import api from '../../utils/api'
+import api from '../../utils/api';
+import Dialog from '@vant/weapp/dialog/dialog';
 
 Page({
 
@@ -76,6 +77,24 @@ Page({
         })
       }
     })
+  },
+
+  onCancelAccount() {
+    Dialog.confirm({
+        title: '注销账号',
+        message: '是否确定注销账号, 一旦注销无法恢复!',
+      })
+      .then(() => {
+        api.destroyAccount().then(data => {
+          wx.removeStorageSync('token')
+          wx.redirectTo({
+            url: '../home/home',
+          })
+        })
+      })
+      .catch(() => {
+        // on cancel
+      });
   },
 
   /**

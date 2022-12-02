@@ -42,9 +42,7 @@ Page({
       phone,
       password
     } = this.data;
-    console.log(phone, password)
     api.login(phone, password).then(data => {
-      console.log(data)
       if (data.code !== 200) {
         // 登录失败
         Dialog.alert({

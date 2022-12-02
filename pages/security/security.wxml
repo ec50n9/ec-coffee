@@ -3,7 +3,7 @@
 
 <van-cell-group inset>
   <van-cell title="修改密码" is-link bindtap="showPasswordPopup" />
-  <van-cell title="注销账号" is-link />
+  <van-cell title="注销账号" is-link bindtap="onCancelAccount"/>
 </van-cell-group>
 
 <view style="padding: 150rpx 32rpx 0;">
@@ -23,3 +23,5 @@
     </view>
   </view>
 </van-popup>
+
+<van-dialog id="van-dialog" />

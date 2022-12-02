@@ -145,6 +145,7 @@ module.exports = {
   register,
   login,
   logout,
+  destroyAccount,
   productDetail,
   banner,
   type,

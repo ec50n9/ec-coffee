@@ -1,5 +1,4 @@
-const baseUrl = getApp().globalData.baseUrl;
-const appkey = getApp().globalData.appkey;
+const { baseUrl, appkey } = getApp().globalData;
 
 const request = (url, method = 'GET', data = {}) => new Promise(resolve => wx.request({
   url: baseUrl + url,
